@@ -1,0 +1,40 @@
+@import "../global.scss";
+
+.hoverLink {
+    outline: none;
+
+    &:hover {
+        color: $Primary;
+    }
+}
+
+.iAma {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 15px;
+    align-items: center ;
+    p{
+        font-weight: 500;
+    }
+    span {
+        border: 1px solid $Primary;
+        border-radius: 7px;
+        padding: 5px 37px;
+        font-weight: 500;
+        &:hover {
+            background-color: $Primary;
+        }
+
+        &:focus {
+            outline: none;
+            background-color: $Primary;
+        }
+    }
+}
+
+.formContainer{
+    label{
+        margin-top: 10px;
+    }
+}

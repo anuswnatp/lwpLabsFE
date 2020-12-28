@@ -1,0 +1,19 @@
+$Secondary:#2c3e50;
+$Primary:#2ecc71;
+$Sea:#16a085;
+body{
+    color:$Secondary;
+}
+
+.form-control{
+    &:focus{
+        border-color: rgba($Sea , 0.4)!important;
+        box-shadow: 0 0 0 0.2rem rgba($Sea , 0.3) !important;
+    }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
