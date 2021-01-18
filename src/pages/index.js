@@ -1,17 +1,14 @@
 import * as React from "react"
-import {Link} from "gatsby"
 import "./global.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from "./home";
 // markup
 const IndexPage = () => {
   return (
-    <main>
-      <title>Training Wale</title>
-      <Link 
-      role="Button"
-      to="/Login"
-      >Login</Link>
-    </main>
+      <main>
+        <title>Training Wale</title>
+          <Home/>
+      </main>
   )
 }
 

@@ -16,15 +16,20 @@
   },
   "license": "0BSD",
   "dependencies": {
+    "@chakra-ui/react": "^1.1.4",
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "cogo-toast": "^1.0.2",
+    "framer-motion": "^3.2.1",
     "gatsby": "^2.26.1",
     "gatsby-plugin-sass": "^2.8.0",
     "node-sass": "^4.14.1",
     "react": "^16.14.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.14.0",
+    "react-icons": "^4.1.0",
     "reactstrap": "^8.8.0"
   }
 }

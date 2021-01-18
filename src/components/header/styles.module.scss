@@ -1,0 +1,25 @@
+@import "../../pages/global.scss";
+
+.navBarContainer {
+    box-shadow: 0px 5px 11px 0px #efecec;
+}
+
+.menuLinks {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+        color: $purple;
+    }
+}
+
+.loginButton {
+    &:hover {
+        color: white;
+    }
+    button{
+        &:hover {
+            box-shadow: 0 0px 13px 1px #bfbaba;
+        }
+    }
+}

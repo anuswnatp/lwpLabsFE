@@ -153,7 +153,7 @@ function Login({Location}) {
                             <span
                                 className={`mt-2 ${styles.hoverLink}`}
                                 onClick={() => {
-                                    window.location.pathname="/signup"
+                                    // window.location.pathname="/signup"
                                     reset()
                                     iAmNew(prevState => !prevState)}}
                                 role="button"
