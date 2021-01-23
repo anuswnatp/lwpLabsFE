@@ -22,3 +22,11 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.menuLinks {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+        color: $purple;
+    }
+}

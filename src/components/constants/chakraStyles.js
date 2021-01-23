@@ -7,6 +7,9 @@ breakpoints.xl = breakpoints[3];
 const colors={
   primary:{
     100:"#1e3888"
+  },
+  footer:{
+    100:"#212529"
   } 
 }
 export const newTheme = {

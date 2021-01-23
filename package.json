@@ -24,12 +24,14 @@
     "cogo-toast": "^1.0.2",
     "framer-motion": "^3.2.1",
     "gatsby": "^2.26.1",
+    "gatsby-image": "^2.9.0",
     "gatsby-plugin-sass": "^2.8.0",
     "node-sass": "^4.14.1",
     "react": "^16.14.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.14.0",
     "react-icons": "^4.1.0",
+    "react-multi-carousel": "^2.6.1",
     "reactstrap": "^8.8.0"
   }
 }

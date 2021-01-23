@@ -2,8 +2,9 @@ import React from 'react'
 import { Button, Text, Box, Stack} from "@chakra-ui/react"
 import Styles from "./styles.module.scss"
 import { Link } from 'gatsby';
+import "../../pages/global.scss"
 const MenuItems = ({ children, isLast, to = "/", ...rest }) => (
-    <Link className={Styles.menuLinks} to={to}>
+    <Link className={`menuLinks`} to={to}>
         <Text
             display="block"
             {...rest}>
