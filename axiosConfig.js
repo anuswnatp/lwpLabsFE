@@ -1,15 +1,11 @@
 import axios from "axios"
 
 //Custom axios instance
-// import Cookies from "js-cookie"
-// const samlCookie= Cookies.get('saml_response')
-// let samlToken=samlCookie?JSON.parse(samlCookie.substr(2,samlCookie.length)):null;
-// const token=samlToken? samlToken.token:null;
-// const token =
-//  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyNzY3OTA5OTQxMzQ1ODc3OSIsIm5hbWUiOiJadWxsaWcgUGhhcm1hIiwiaWF0Ijo4NzU2MjMwMDk4fQ.tpuVnsAWSjeWtwEFbyDteEZYN4BGOz82EOq9pgkBJik"
+
+const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTE3NGVkOThjZjIwMDI1ZTI2NjRjMiIsImlhdCI6MTYxMjIwNDI0MCwiZXhwIjoxNjE0Nzk2MjQwfQ.hRpt5mios6PQ3B8WU6u_szKUn2BTA45EduEExNF8f-g"
 const axiosInstance = axios.create({
-  baseURL: "/api"
-//   headers: { Authorization: `Bearer ${token}` },
+  baseURL: "https://evening-mesa-71677.herokuapp.com",
+  headers: { Authorization: `Bearer ${token}` },
 })
 
 export default axiosInstance

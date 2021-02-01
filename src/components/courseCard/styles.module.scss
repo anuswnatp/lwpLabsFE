@@ -1,0 +1,33 @@
+@import "../../pages/global.scss";
+
+.card{
+    box-shadow: 1px 3px 8px 0px #c1c1c1;
+    border: none;
+    transition: transform,box-shadow 0.3s ease-in;
+    .batch{
+        display: none;
+    }
+    &:hover{
+        transform: scale(1.01);
+        box-shadow: 1px 3px 6px 6px #e4e4e4;
+        .info{
+            font-size: 15px;
+            display: none;
+        }
+        .batch{
+            font-size: 15px;
+            display: block;
+            p:nth-child(1){
+                font-weight: 800;
+                color: $Primary;
+            }
+            p{
+                font-weight: 500;
+                color: $highlighter;
+                &:nth-last-child(1){
+                    color: tomato;
+                }
+            }
+        }
+    }
+}

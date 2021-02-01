@@ -29,7 +29,9 @@ function MenuLinks({ show }) {
                 <MenuItems>Courses</MenuItems>
                 <MenuItems>Testimonials</MenuItems>
                 <Link className={Styles.loginButton} style={{textDecoration:"none"}} to="/Login">
-                <Button  bg={["transparent","primary.100"]} border="1px" color={["#fff"]}>
+                <Button 
+                className={Styles.btn}
+                bg={["transparent","primary.100"]} border={["1px","1px","none","none"]} borderRadius="30px" color={["#fff"]}>
                     Login
                 </Button>
                 </Link>

@@ -1,0 +1,106 @@
+@import "../global.scss";
+
+.carouselContainer {
+    padding: 22px 0;
+
+    button {
+
+        &:hover,
+        &:focus,
+        &:active {
+            outline: none;
+        }
+    }
+}
+
+.itemContainer {
+    padding: 0 20px;
+
+    h4 {
+        color: $Primary;
+    }
+
+    span {
+        color: $highlighter;
+    }
+
+    p {
+        font-weight: 700;
+    }
+
+    @include smobile {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+//Consult Section
+.consultImage {
+    height: 30%;
+    width: 50%;
+
+    @include md {
+        height: 40%;
+        width: 60%;
+    }
+
+    object-fit: cover;
+}
+
+.consultContainer {
+    // width: 48%;
+    height: fit-content;
+    padding: 27px 30px;
+    text-align: justify;
+    border-radius: 15px;
+    background-color: $boxColor;
+    box-shadow: 1px 3px 8px 0px #c1c1c1;
+
+    h2 {
+        text-align: start;
+        align-self: start;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        width: fit-content;
+        margin-top: 10px;
+    }
+}
+
+.commentsCard {
+    padding: 20px;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-blend-mode: normal;
+    box-shadow: 1px 3px 8px 0px #c1c1c1;
+    border-radius: 17px;
+    background-color: rgba(255, 255, 255, .8);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    .name{
+        text-align: end !important;
+        &::before{
+            content: "";
+    height: 1px;
+    left: 53%;
+    width: 71px;
+    position: absolute;
+    background: currentColor;
+    align-self: center;
+    bottom: 21%;
+        }
+    }
+    canvas{
+        border-radius: 50%;
+        height: 120px !important;
+        width: 120px !important;
+        margin-bottom: 10px;
+    }
+}

@@ -1,27 +1,154 @@
 $Secondary:#ffd166;
 $Primary:#1e3888;
-$Sea:#06d6a0; 
+$Sea:#06d6a0;
 $highlighter:#073b4c;
 $pink:#ef476f;
 $purple:#6118de;
 $offWhite:#EEF4ED;
 $textMain:#1e1e1e;
-body{
-    color:$textMain;
+$boxColor:#e5ecf23d;
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,900&display=swap');
+body {
+    color: $textMain;
+    font-family: 'Mulish', sans-serif !important;
 }
 
-.form-control{
-    &:focus{
-        border-color: rgba($Sea , 0.4)!important;
-        box-shadow: 0 0 0 0.2rem rgba($Sea , 0.3) !important;
+// media
+@mixin sm {
+    @media (max-width: 360px) {
+        @content;
+    }
+}
+@mixin md {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+@mixin lg {
+    @media (max-width: 1024px) {
+        @content;
+    }
+}
+@mixin xl {
+    @media (max-width: 1440px) {
+        @content;
+    }
+}
+@mixin screen4k {
+    @media (min-width: 1600px) {
+        @content;
+    }
+}
+
+@mixin highResScreen {
+    @media (min-width: 1450px) {
+        @content;
+    }
+}
+
+@mixin maxmDesktop {
+    @media (min-width: 1521px) {
+        @content;
+    }
+}
+
+@mixin maxsDesktop {
+    @media (max-width: 1515px) {
+        @content;
+    }
+}
+
+@mixin maxdDesktop {
+    @media (min-width: 1690px) {
+        @content;
+    }
+}
+
+@mixin screen4kmax {
+    @media (max-width: 1599px) {
+        @content;
+    }
+}
+
+@mixin mindesktop {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin maxDesktop {
+    @media (min-width: 1400px) {
+        @content;
+    }
+}
+
+@mixin mindesktop {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+
+@mixin mdesktop {
+    @media (max-width: 1199px) {
+        @content;
+    }
+}
+
+
+@mixin ipadpro {
+    @media (max-width: 1065px) {
+        @content;
+    }
+}
+
+
+@mixin mtablet {
+    @media (max-width: 991px) {
+        @content;
+    }
+}
+
+@mixin mmobile {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin smobile {
+    @media (max-width: 480px) {
+        @content;
+    }
+}
+
+
+@mixin xsmob {
+    @media (max-width: 360px) {
+        @content;
+    }
+}
+
+
+@mixin till4k {
+    @media (max-width: 2000px) {
+        @content;
+    }
+}
+
+
+.form-control {
+    &:focus {
+        border-color: rgba($Sea, 0.4) !important;
+        box-shadow: 0 0 0 0.2rem rgba($Sea, 0.3) !important;
     }
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
+
 .menuLinks {
     text-decoration: none;
 
@@ -29,4 +156,8 @@ input::-webkit-inner-spin-button {
         text-decoration: none;
         color: $purple;
     }
+}
+
+.chakra-modal__content,.css-1lml9xp{
+    z-index: 10000;
 }
