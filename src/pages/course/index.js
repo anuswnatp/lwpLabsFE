@@ -1,0 +1,63 @@
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Box, Text } from "@chakra-ui/react";
+import styles from "./styles.module.scss";
+import CourseCard from "../../components/courseCard";
+import { setAllCourseData } from "../../../services/redux/actions/courses";
+import { getAllCourses } from "../../../services/api/courses.api";
+const Courses = () => {
+  const [courses, setCourses] = useState([]);
+  const dispatch = useDispatch();
+  const _getAllCourses = async () => {
+    let res = await getAllCourses(false);
+    dispatch(setAllCourseData(res.data));
+    setCourses(res.data);
+  };
+
+  useEffect(() => {
+    _getAllCourses();
+  }, []);
+
+  return (
+    <div>
+      <Text
+        mb="20px"
+        textAlign="center"
+        color="primary.100"
+        fontWeight="500"
+        fontSize="3xl"
+      >
+        All Courses
+      </Text>
+      <Box className={styles.cardContainer}>
+        {courses && courses.length ? (
+          courses.map((item, key) => (
+            <div className={styles.card}>
+              <CourseCard
+                imageUrl={item.img}
+                imageAlt={item.title}
+                title={item.title}
+                rating={item.ratings}
+                formattedPrice={item.price}
+                instructor={`${item.teachers[0]?.firstName} ${item.teachers[0]?.lastName}`}
+                latestBatch={item.batches ? item.batches[0] : null}
+                key={key}
+              />
+            </div>
+          ))
+        ) : (
+          <Text
+            mb="20px"
+            color="primary.100"
+            fontWeight="400"
+            fontSize="2xl"
+          >
+            Sorry! There is no courses right now.
+          </Text>
+        )}
+      </Box>
+    </div>
+  );
+};
+
+export default Courses;
