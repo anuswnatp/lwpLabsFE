@@ -158,6 +158,12 @@ input::-webkit-inner-spin-button {
     }
 }
 
-.chakra-modal__content,.css-1lml9xp{
-    z-index: 10000;
+// .chakra-modal__content-container{
+//     z-index: 100000 !important;
+// }
+.modalCross{
+    &:active,&:hover,&:focus{
+        outline: none;
+        box-shadow: none;
+    }
 }

@@ -104,3 +104,20 @@
         margin-bottom: 10px;
     }
 }
+.company::-webkit-scrollbar {
+    display: none;
+    }
+
+.company{
+    margin-bottom: 20px;
+    height: 100px;
+    img{
+        filter: grayscale(50%);
+        transition: all 0.5s ease;
+        &:hover{
+            filter: none;
+            height: 55px;
+            width: 130px;
+        }
+    }
+}

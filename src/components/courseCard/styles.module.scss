@@ -7,6 +7,11 @@
     .batch{
         display: none;
     }
+    img{
+        height: 300px;
+        width: 300px;
+        object-fit: cover;
+    }
     &:hover{
         transform: scale(1.01);
         box-shadow: 1px 3px 6px 6px #e4e4e4;

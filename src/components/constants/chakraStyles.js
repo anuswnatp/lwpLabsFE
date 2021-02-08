@@ -23,6 +23,9 @@ const colors = {
   purple: {
     100: "#e5ecf23d",
     600: "#686ade"
+  },
+  text:{
+    100:"#33415c"
   }
 }
 export const newTheme = {

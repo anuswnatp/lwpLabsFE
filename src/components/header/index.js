@@ -20,7 +20,7 @@ const Header = props => {
             mb={0}
             p={5}
             position="sticky"
-            zIndex={9999}
+            zIndex={90}
             top={-1}
             bg={["primary.100", "primary.100", "rgba(255, 255, 255, .8)", "rgba(255, 255, 255, .8)"]}
             color={["white", "white", "primary.100", "primary.100"]}

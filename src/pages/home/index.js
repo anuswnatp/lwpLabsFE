@@ -20,6 +20,15 @@ import AvatarGenerator from 'react-avatar-generator';
 import { AiFillLinkedin } from "react-icons/ai"
 import Form from "../../components/form"
 import SectionDivider from '../../components/sectionDivider'
+import { getBanners } from '../../../services/api/banners.api'
+import tcs from "../../images/company/tcs.png"
+import genpact from "../../images/company/Genpact_horizontal_color_rgb.svg"
+import wipro from "../../images/company/wipro.png"
+import mindtree from "../../images/company/mindtree.png"
+import visa from "../../images/company/visa.png"
+import oracle from "../../images/company/oracle.png"
+import amazon from "../../images/company/amazon.png"
+import VideoPlayer from "../../components/videoPlayer"
 function Home(props) {
     // const courseState = useSelector(state => state.course.trendingCourses)
     // const batchState = useSelector(state => state.course.trendingBatches)
@@ -28,7 +37,12 @@ function Home(props) {
     const dispatch = useDispatch()
     const getAllTrendingCourse = async () => {
         let data = await getAllCourses(true)
+        try{
         dispatch(setAllTrendingCourseData(data))
+        }catch{
+            console.error("Internal Server Error");
+        }
+        // let banners= await getBanners()
     }
     // const getAllTrendingBatches = async () => {
     //     let data = await getAllBatches(true)
@@ -36,6 +50,7 @@ function Home(props) {
     // }
     useEffect(() => {
         getAllTrendingCourse()
+        getBanners()
         // getAllTrendingBatches()
     }, [])
     return (
@@ -44,6 +59,7 @@ function Home(props) {
                 <BannerCarousel />
                 <Box>
                     <AboutSection />
+                    <VideoPlayer/>
                     <Box background="#c0c0c01a">
                         {/* <Tab
                             type="lg"
@@ -55,6 +71,7 @@ function Home(props) {
                     <Counselling onOpen={onOpen} />
                     <SectionDivider/>
                     <Testimonials />
+                    <Clients/>
                 </Box>
             </div>
     )
@@ -173,7 +190,30 @@ const AboutSection = () => {
         </Box>)}
     </Flex>
 }
-
+const Clients= ()=>{
+    const ar=[{src:tcs,link:"https://www.tcs.com/"},
+    {src:genpact,link:"https://www.genpact.com/"},
+    {src:wipro,link:"https://www.genpact.com/"},
+    {src:amazon,link:"https://www.genpact.com/"},
+    {src:mindtree,link:"https://www.genpact.com/"},
+    {src:visa,link:"https://www.genpact.com/"},
+    {src:oracle,link:"https://www.genpact.com/"},
+]
+    return (
+        <Box d="flex" minH="120px" alignItems="center" p="0 40px">
+            <Text color="text.100" fontWeight="800" mr="30px">
+                Our Clients
+            </Text>
+            <Box className={styles.company} d="flex" alignItems="center" h="100%" overflow="hidden" overflowX="scroll">
+                {
+                    ar.map((i,key)=><a key={key} href={i.link} target="_blank">
+                        <Image m="0 20px" objectFit="contain" h="50px" w="120px" src={i.src}/>
+                    </a>)
+                }
+            </Box>
+        </Box>
+    )
+}
 const Testimonials = () => {
     let data = {
         name: "Mohammad Ali",
