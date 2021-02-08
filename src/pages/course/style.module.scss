@@ -52,7 +52,7 @@
 .learnSectionSpan {
   display: block;
   line-height: 35px;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .courseContentSection {
@@ -65,17 +65,13 @@
 }
 
 .fixedBoxContainer {
-  width: 100% !important;
+  width: 67% !important;
   height: fit-content;
   padding: 27px 30px;
   text-align: justify;
-  border-radius: 15px;
-  background-color: $boxColor;
-  box-shadow: 1px 3px 8px 0px #c1c1c1;
-  position: sticky;
-  top: 100px;
+  background-color: #fff;
 
-  h2 {
+  h3 {
     text-align: start;
     align-self: start;
   }
@@ -86,11 +82,43 @@
   align-items: center;
 }
 
+.stickyBox {
+  position: sticky;
+  top: 85px;
+  box-shadow: 1px 3px 8px 0px #c1c1c1;
+  background-color: $boxColor !important;
+  border-radius: 15px;
+}
+.absoluteBox {
+  position: absolute;
+  top: -83px;
+  left: 36px;
+}
+
+.boxIncludes {
+  margin-left: 10%;
+  width: 100%;
+  h6 {
+    text-align: start;
+    align-self: start;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-top: 10px;
+  }
+
+  .boxText {
+    color: #808080;
+    font-size: 15px;
+    font-weight: 400;
+  }
+}
+
 .btnDemo {
   width: 90% !important;
   font-size: 18px;
   font-weight: 700;
-  margin: 5px auto;
+  margin: 5% auto;
   color: #fff !important;
   background-color: #e73d3a;
 }
@@ -106,12 +134,12 @@
 
 .requirementSection {
   margin: 40px;
-
 }
 
-.requirementSectionHeader{
+.requirementSectionHeader {
   font-size: 24px;
   font-weight: 800;
+  margin-bottom: 15px;
 }
 
 .featuredSection {
@@ -120,9 +148,9 @@
 
 .featuredSectionContainer {
   background: #fbfbf8;
-    border: 1px solid #dcdacb;
-    border-radius: 4px;
-    padding: 2.4rem;
+  border: 1px solid #dcdacb;
+  border-radius: 4px;
+  padding: 2.4rem;
 }
 
 .featureStarContainer {
@@ -133,9 +161,39 @@
 
 .featuredSectionSpan {
   color: #73726c;
-  margin-left: .8rem;
+  margin-left: 0.8rem;
 }
 
-.teachersSection{
+.trendingCourseSection {
   margin: 40px;
+}
+
+.trendingCourseContainer{
+  
+}
+
+.teachersSection {
+  margin: 40px;
+}
+
+.descriptionSection {
+  margin: 40px;
+}
+
+.descriptionSectionHedaer {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.showMoreBtn {
+  color: #0f7c90;
+  &:hover {
+    text-decoration: none !important;
+  }
+
+  &:focus {
+    box-shadow: none !important;
+    outline: none;
+  }
 }

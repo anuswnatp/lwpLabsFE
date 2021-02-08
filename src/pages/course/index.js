@@ -19,6 +19,7 @@ import PropTypes from "prop-types";
 import withLocation from "../../components/withLocation";
 import BatchModal from "../../components/batchModal";
 import axiosInstance from "../../../axiosConfig";
+import { getAllCourses } from "../../../services/api/courses.api";
 import cogoToast from "cogo-toast";
 import {
   BsStarFill,
@@ -30,15 +31,21 @@ import {
 } from "react-icons/bs";
 // import {VscDebugBreakpointLog} from "react-icons/vsc"
 import { BiCheck } from "react-icons/bi";
-import { FaPen } from "react-icons/fa";
+import {
+  FaPen,
+  FaMobileAlt,
+  FaCertificate,
+  FaCaretUp,
+  FaCaretDown,
+} from "react-icons/fa";
 import { MdLanguage } from "react-icons/md";
 import { AiFillPlayCircle } from "react-icons/ai";
+import { RiLiveFill, RiArticleLine } from "react-icons/ri";
 import styles from "./style.module.scss";
 import { getDate } from "../../helperMethod";
 
 const GetStar = ({ star }) => {
   const starCount = parseInt(star);
-  console.log("strat--->", starCount, star);
   return (
     <>
       {starCount &&
@@ -61,6 +68,11 @@ const Course = ({ search }) => {
   const [batches, setBatches] = useState([]);
   const [showFeature, setShowFeature] = useState(false);
   const [showTeacher, setShowTeacher] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
+  const [showSummary, setShowSummary] = useState(false);
+  const [showLessonDescription, setShowLessonDescription] = useState("");
+  const [windowHeight, setWindowHeight] = useState();
+  const [trendingCourse, setTrendingCourse] = useState([]);
 
   const _getCourse = async () => {
     setLoading(true);
@@ -75,9 +87,30 @@ const Course = ({ search }) => {
       cogoToast.error("Something went wrong!");
     }
   };
+  const getWindowHeight = () => {
+    setWindowHeight(window.scrollY);
+  };
+
+  const _getTrendingCourses = async () => {
+    let res = await getAllCourses(true);
+    setTrendingCourse(res.data);
+  };
   useEffect(() => {
     _getCourse();
+    _getTrendingCourses();
+    window.addEventListener("scroll", getWindowHeight);
+    return () => {
+      window.removeEventListener("scroll");
+    };
   }, []);
+
+  const handleShowLessonDescription = (id) => {
+    if (showLessonDescription === id) {
+      setShowLessonDescription("");
+    } else {
+      setShowLessonDescription(id);
+    }
+  };
 
   const shortText = (text) => {
     if (text.length > 100) {
@@ -85,6 +118,7 @@ const Course = ({ search }) => {
     }
     return text;
   };
+  
   return (
     <div>
       {loading ? (
@@ -143,28 +177,46 @@ const Course = ({ search }) => {
               <div className={`col-8 mx-0`}>
                 <div
                   className={styles.learnSection}
-                  style={{ backgroundColor: "#FBFBF8", maxHeight: "500px" }}
+                  style={{ backgroundColor: "#FBFBF8", height: "auto" }}
                 >
                   <h2 className={styles.learnSectionHeader}>
                     What you'll learn
                   </h2>
-                  <Wrap>
+                  <Wrap className="p-2">
                     {course.summary &&
                       course.summary.length > 0 &&
-                      course.summary.map((item, key) => (
-                        <WrapItem key={key}>
-                          <Box
-                            w="380px"
-                            // h="100px"
-                          >
-                            <span className={styles.learnSectionSpan}>
-                              <BiCheck className={styles.inlineBlock} />
-                              {item}
-                            </span>
-                          </Box>
-                        </WrapItem>
-                      ))}
+                      course.summary.map((item, key) => {
+                        return showSummary ? (
+                          <WrapItem key={key}>
+                            <Box w="380px">
+                              <span className={styles.learnSectionSpan}>
+                                <BiCheck className={styles.inlineBlock} />
+                                {item}
+                              </span>
+                            </Box>
+                          </WrapItem>
+                        ) : key <= 5 ? (
+                          <WrapItem key={key}>
+                            <Box w="380px">
+                              <span className={styles.learnSectionSpan}>
+                                <BiCheck className={styles.inlineBlock} />
+                                {item}
+                              </span>
+                            </Box>
+                          </WrapItem>
+                        ) : null;
+                      })}
                   </Wrap>
+                  {course.summary && course.summary.length > 6 ? (
+                    <Button
+                      onClick={() => setShowSummary(!showSummary)}
+                      colorScheme="teal"
+                      className={styles.showMoreBtn}
+                      variant="link"
+                    >
+                      {showSummary ? "Show less" : "Show more"}
+                    </Button>
+                  ) : null}
                 </div>
                 <div className={styles.courseContentSection}>
                   <label className={styles.courseContentSectionLabel}>
@@ -184,8 +236,33 @@ const Course = ({ search }) => {
                             </h2>
                             {lesson.Lessons && lesson.Lessons.length
                               ? lesson.Lessons.map((topic, id) => (
-                                  <AccordionPanel pb={4} key={id}>
-                                    {topic.title}
+                                  <AccordionPanel
+                                    pb={4}
+                                    key={id}
+                                    onClick={() =>
+                                      handleShowLessonDescription(topic._id)
+                                    }
+                                  >
+                                    {topic.title}{" "}
+                                    {showLessonDescription === topic._id ? (
+                                      <FaCaretUp
+                                        className={`${styles.inlineBlock} ml-1`}
+                                      />
+                                    ) : (
+                                      <FaCaretDown
+                                        className={`${styles.inlineBlock} ml-1`}
+                                      />
+                                    )}
+                                    <p
+                                      style={{
+                                        display:
+                                          showLessonDescription === topic._id
+                                            ? "block"
+                                            : "none",
+                                      }}
+                                    >
+                                      {topic.descriptions}
+                                    </p>
                                   </AccordionPanel>
                                 ))
                               : null}
@@ -209,6 +286,29 @@ const Course = ({ search }) => {
                     ) : (
                       <Text>There is no requirements.</Text>
                     )}
+                  </div>
+                </div>
+                <div className={styles.descriptionSection}>
+                  <Text className={styles.descriptionSectionHedaer}>
+                    Description
+                  </Text>
+                  <div>
+                    <Text
+                      style={{
+                        height: showDescription ? "auto" : "200px",
+                        overflow: "hidden",
+                      }}
+                    >
+                      {course.description}
+                    </Text>
+                    <Button
+                      onClick={() => setShowDescription(!showDescription)}
+                      className={styles.showMoreBtn}
+                      colorScheme="teal"
+                      variant="link"
+                    >
+                      {showDescription ? "Show less" : "Show more"}
+                    </Button>
                   </div>
                 </div>
                 <div className={styles.featuredSection}>
@@ -266,12 +366,48 @@ const Course = ({ search }) => {
                       <Button
                         onClick={() => setShowFeature(!showFeature)}
                         colorScheme="teal"
-                        style={{ color: "#0f7c90" }}
+                        className={styles.showMoreBtn}
                         variant="link"
                       >
-                        Show more
+                        {showFeature ? "Show less" : "Show more"}
                       </Button>
                     </div>
+                  </div>
+                </div>
+                <div className={styles.trendingCourseSection}>
+                  <h2
+                    style={{
+                      fontSize: "24px",
+                      fontWeight: 800,
+                      marginBottom: "10px",
+                    }}
+                  >
+                    Students also bought
+                  </h2>
+                  <div className={styles.trendingCourseContainer}>
+                    {trendingCourse && trendingCourse.length>0?
+                    trendingCourse.map((item, key)=> (
+                      <div key={key} style={{
+                        display: "flex",
+                        marginTop: "15px",
+                        marginBottom: "15px",
+                      }}>
+                        <Image
+                        style={{ marginRight: "10px" }}
+                        boxSize="80px"
+                        src={item.img}
+                        alt="Course_Image"
+                      />
+                      <div>
+                        <Text style={{fontSize: "18px", fontWeight:700}}>{item.title}</Text>
+                        <Text style={{fontWeight:500}}>Updated on {getDate(course.updatedAt)}</Text>
+                      </div>
+                      <div style={{margin: "0 auto"}}><Text style={{color: "gold", fontWeight:600}}><BsStarFill className={styles.inlineBlock}/>{item.ratings || '4.5'}</Text></div>
+                      <div><Text style={{fontWeight:800}}>₹{item.price}</Text></div>
+                    </div>
+                    )):null}
+                    
+
                   </div>
                 </div>
                 <div className={styles.teachersSection}>
@@ -374,10 +510,10 @@ const Course = ({ search }) => {
                       <Button
                         onClick={() => setShowTeacher(!showTeacher)}
                         colorScheme="teal"
-                        style={{ color: "#0f7c90" }}
+                        className={styles.showMoreBtn}
                         variant="link"
                       >
-                        Show more
+                        {showTeacher ? "Show less" : "Show more"}
                       </Button>
                     </div>
                   </div>
@@ -388,10 +524,14 @@ const Course = ({ search }) => {
                   width={["100%", "100%", "48%", "48%"]}
                   alignSelf="flex-start"
                   mt={["0", "0", "30px", "100px"]}
-                  className={styles.fixedBoxContainer}
+                  className={
+                    windowHeight > 350
+                      ? `${styles.fixedBoxContainer} ${styles.stickyBox}`
+                      : `${styles.fixedBoxContainer} ${styles.absoluteBox}`
+                  }
                 >
                   <Text
-                    as="h2"
+                    as="h3"
                     fontSize={["2em", "3em"]}
                     fontWeight={800}
                     color="primary.200"
@@ -412,6 +552,25 @@ const Course = ({ search }) => {
                   >
                     Buy Now
                   </Button>
+                  <div className={styles.boxIncludes}>
+                    <Text as="h6">This course includes:</Text>
+                    <Text className={`${styles.boxText}`}>
+                      <RiLiveFill className={`${styles.inlineBlock} mr-2`} />
+                      On demand live classes
+                    </Text>
+                    <Text className={`${styles.boxText}`}>
+                      <RiArticleLine className={`${styles.inlineBlock} mr-2`} />
+                      22 lectures
+                    </Text>
+                    <Text className={`${styles.boxText}`}>
+                      <FaMobileAlt className={`${styles.inlineBlock} mr-2`} />
+                      Access on Mobile and TV
+                    </Text>
+                    <Text className={`${styles.boxText}`}>
+                      <FaCertificate className={`${styles.inlineBlock} mr-2`} />
+                      Certificate on completion
+                    </Text>
+                  </div>
                 </Box>
               </div>
             </div>
