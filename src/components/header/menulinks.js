@@ -26,7 +26,7 @@ function MenuLinks({ show }) {
                 pt={[4, 0, 0, 0]}
             >
                 <MenuItems>About us</MenuItems>
-                <MenuItems>Courses</MenuItems>
+                <MenuItems to="/courses">Courses</MenuItems>
                 <MenuItems>Testimonials</MenuItems>
                 <Link className={Styles.loginButton} style={{textDecoration:"none"}} to="/Login">
                 <Button 

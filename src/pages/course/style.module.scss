@@ -1,0 +1,199 @@
+@import "../global.scss";
+
+.banner {
+  height: 50vh;
+  background-color: #1e1e1c;
+}
+
+.bannerContainer {
+  margin-left: 10%;
+  padding-top: 3%;
+  line-height: 30px;
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #fff;
+  }
+  p {
+    color: #fff;
+    font-size: 18px;
+  }
+}
+
+.bannerSpan {
+  color: #fff;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.badgeColor {
+  color: gold;
+  border: solid 1px;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.inlineBlock {
+  display: inline-block;
+}
+
+.learnSection {
+  margin: 40px;
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+
+.learnSectionHeader {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 15px;
+}
+
+.learnSectionSpan {
+  display: block;
+  line-height: 35px;
+  font-size: 17px;
+}
+
+.courseContentSection {
+  margin: 35px;
+}
+
+.courseContentSectionLabel {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.fixedBoxContainer {
+  width: 67% !important;
+  height: fit-content;
+  padding: 27px 30px;
+  text-align: justify;
+  background-color: #fff;
+
+  h3 {
+    text-align: start;
+    align-self: start;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.stickyBox {
+  position: sticky;
+  top: 85px;
+  box-shadow: 1px 3px 8px 0px #c1c1c1;
+  background-color: $boxColor !important;
+  border-radius: 15px;
+}
+.absoluteBox {
+  position: absolute;
+  top: -83px;
+  left: 36px;
+}
+
+.boxIncludes {
+  margin-left: 10%;
+  width: 100%;
+  h6 {
+    text-align: start;
+    align-self: start;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-top: 10px;
+  }
+
+  .boxText {
+    color: #808080;
+    font-size: 15px;
+    font-weight: 400;
+  }
+}
+
+.btnDemo {
+  width: 90% !important;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 5% auto;
+  color: #fff !important;
+  background-color: #e73d3a;
+}
+
+.btnBuy {
+  width: 90% !important;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 5px auto;
+  color: #0f7c90 !important;
+  border: 1px solid #2896a9;
+}
+
+.requirementSection {
+  margin: 40px;
+}
+
+.requirementSectionHeader {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.featuredSection {
+  margin: 40px;
+}
+
+.featuredSectionContainer {
+  background: #fbfbf8;
+  border: 1px solid #dcdacb;
+  border-radius: 4px;
+  padding: 2.4rem;
+}
+
+.featureStarContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.featuredSectionSpan {
+  color: #73726c;
+  margin-left: 0.8rem;
+}
+
+.trendingCourseSection {
+  margin: 40px;
+}
+
+.trendingCourseContainer{
+  
+}
+
+.teachersSection {
+  margin: 40px;
+}
+
+.descriptionSection {
+  margin: 40px;
+}
+
+.descriptionSectionHedaer {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.showMoreBtn {
+  color: #0f7c90;
+  &:hover {
+    text-decoration: none !important;
+  }
+
+  &:focus {
+    box-shadow: none !important;
+    outline: none;
+  }
+}
