@@ -20,8 +20,10 @@ function VideoPlayer() {
         <Flex className={styles.videoPlayer} justifyContent="center" alignItems="center" mb="20px">
             <ReactPlayer
             playIcon={<button><BsPlayFill/></button>}
-            light="true"
-            url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+            light={true}
+            playing={true}
+            loop={true}
+            url='https://www.youtube.com/watch?v=1mo0UuAP3WI&t=1192s' />
         </Flex>
     )
 }

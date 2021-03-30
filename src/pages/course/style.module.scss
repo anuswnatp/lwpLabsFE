@@ -1,19 +1,58 @@
 @import "../global.scss";
 
+.courseContainer {
+  label {
+    color: $Primary;
+    font-size: 24px;
+    font-weight: 800;
+  }
+
+  p {
+    color: $highlighter;
+  }
+}
+
+.accordion {
+  border: none;
+  box-shadow: 1px 3px 8px 0px #c1c1c1;
+  border-radius: 5px;
+  margin: 15px;
+  button{
+    &:active, &:focus{
+      box-shadow: none;
+      outline: none;
+    }
+  }
+}
+
+.showMore {
+  display: flex;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(180deg, transparent, #3b80c77d);
+}
+
 .banner {
-  height: 50vh;
-  background-color: #1e1e1c;
+  background-color: #00081b;
+  box-shadow: 0 0 7px 3px #868686;
+  padding: 35px 0;
+  background-image: url("https://awv3node-homepage.surge.sh/build/assets/stars.svg");
+  background-size: cover;
 }
 
 .bannerContainer {
-  margin-left: 10%;
-  padding-top: 3%;
+  // margin-left: 10%;
+  justify-content: center;
+  padding: 10px;
+  margin-left: 6%;
   line-height: 30px;
+
   h1 {
     font-size: 30px;
     font-weight: 800;
     color: #fff;
   }
+
   p {
     color: #fff;
     font-size: 18px;
@@ -22,7 +61,8 @@
 
 .bannerSpan {
   color: #fff;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   margin-right: 20px;
 }
 
@@ -33,40 +73,27 @@
   margin-right: 5px;
 }
 
-.inlineBlock {
-  display: inline-block;
-}
 
 .learnSection {
-  margin: 40px;
   border: 1px solid #eee;
   overflow: hidden;
-}
 
-.learnSectionHeader {
-  font-size: 24px;
-  font-weight: 800;
-  margin: 15px;
-}
 
-.learnSectionSpan {
-  display: block;
-  line-height: 35px;
-  font-size: 17px;
-}
+  .learnSectionHeader {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 15px;
+  }
 
-.courseContentSection {
-  margin: 35px;
-}
-
-.courseContentSectionLabel {
-  font-size: 24px;
-  font-weight: 800;
+  .learnSectionSpan {
+    line-height: 35px;
+    font-size: 17px;
+  }
 }
 
 .fixedBoxContainer {
-  width: 67% !important;
-  height: fit-content;
+  // width: max-content !important;
+  height: max-content;
   padding: 27px 30px;
   text-align: justify;
   background-color: #fff;
@@ -85,19 +112,21 @@
 .stickyBox {
   position: sticky;
   top: 85px;
-  box-shadow: 1px 3px 8px 0px #c1c1c1;
-  background-color: $boxColor !important;
-  border-radius: 15px;
+  box-shadow: -1px 6px 8px 9px #d2e6ff69;
+  border-radius: 7px 7px;
 }
+
 .absoluteBox {
-  position: absolute;
-  top: -83px;
-  left: 36px;
+  // position: absolute;
+  margin-top: 20px;
+  box-shadow: -1px -2px 8px 9px #d2e6ff69;
+  border-radius: 7px 7px;
 }
 
 .boxIncludes {
   margin-left: 10%;
   width: 100%;
+
   h6 {
     text-align: start;
     align-self: start;
@@ -111,17 +140,19 @@
     color: #808080;
     font-size: 15px;
     font-weight: 400;
+    display: flex;
+    align-items: center;
   }
 }
 
-.btnDemo {
-  width: 90% !important;
-  font-size: 18px;
-  font-weight: 700;
-  margin: 5% auto;
-  color: #fff !important;
-  background-color: #e73d3a;
-}
+// .btnDemo {
+//   width: 90% !important;
+//   font-size: 18px;
+//   font-weight: 700;
+//   margin: 5% auto;
+//   color: #fff !important;
+//   background-color: #e73d3a;
+// }
 
 .btnBuy {
   width: 90% !important;
@@ -132,9 +163,9 @@
   border: 1px solid #2896a9;
 }
 
-.requirementSection {
-  margin: 40px;
-}
+// .requirementSection {
+//   margin: 40px;
+// }
 
 .requirementSectionHeader {
   font-size: 24px;
@@ -168,9 +199,9 @@
   margin: 40px;
 }
 
-.trendingCourseContainer{
-  
-}
+// .trendingCourseContainer{
+
+// }
 
 .teachersSection {
   margin: 40px;
@@ -188,6 +219,7 @@
 
 .showMoreBtn {
   color: #0f7c90;
+
   &:hover {
     text-decoration: none !important;
   }

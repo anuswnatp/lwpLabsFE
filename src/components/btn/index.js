@@ -2,12 +2,14 @@ import {Button} from "@chakra-ui/react"
 
 import React from 'react'
 import Styles from "./styles.module.scss"
-function Btn({children,onClick,size="lg",primary}) {
+function Btn({children,onClick,size="lg",primary,bgColor, color="#fff", style={color:""}}) {
     return (
         <Button
+        style={{...style}}
         className={Styles.btn}
         width="fit-content"
-        bg={primary?"primary.100":"primary.300"}
+        color={color}
+        bg={bgColor || primary?"primary.100":"primary.300"}
         onClick={()=>onClick()}
         size={size}
         colorScheme="blue"

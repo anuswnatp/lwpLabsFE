@@ -69,7 +69,16 @@ function Home(props) {
                         <CourseSection/>
                     </Box>
                     <Counselling onOpen={onOpen} />
-                    <SectionDivider/>
+                    <SectionDivider>
+                        <Box>
+                            <Text color="#fff">
+                                Call us for free Workshop:
+                            </Text>
+                            <Text>
+                                
+                            </Text>
+                        </Box>
+                    </SectionDivider>
                     <Testimonials />
                     <Clients/>
                 </Box>
