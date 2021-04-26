@@ -29,10 +29,8 @@ import visa from "../../images/company/visa.png"
 import oracle from "../../images/company/oracle.png"
 import amazon from "../../images/company/amazon.png"
 import VideoPlayer from "../../components/videoPlayer"
+import { navigate } from 'gatsby'
 function Home(props) {
-    // const courseState = useSelector(state => state.course.trendingCourses)
-    // const batchState = useSelector(state => state.course.trendingBatches)
-    // const [tabList, settabList] = useState(["Trending Courses", "Upcoming Batches"])
     const { isOpen, onOpen, onClose } = useDisclosure()
     const dispatch = useDispatch()
     const getAllTrendingCourse = async () => {
@@ -61,11 +59,6 @@ function Home(props) {
                     <AboutSection />
                     <VideoPlayer/>
                     <Box background="#c0c0c01a">
-                        {/* <Tab
-                            type="lg"
-                            tabList={tabList}
-                            view={[<CourseSection/>, <BatchSection/>]}
-                        /> */}
                         <CourseSection/>
                     </Box>
                     <Counselling onOpen={onOpen} />
@@ -131,7 +124,8 @@ const CourseSection = () => {
     return <Box as="div">
         <Text mb="20px" textAlign="center" color="primary.100" fontWeight="500" fontSize="3xl">Trending Courses</Text>
         {courseState?.data && <ListCarousel>
-            {courseState?.data?.map((item, key) => <CourseCard
+            {courseState?.data?.map((item, key) => <Box onClick={()=>navigate(`/course?courseId=${item._id}`)}>
+            <CourseCard
                 imageUrl={item.img}
                 imageAlt={item.title}
                 title={item.title}
@@ -139,7 +133,7 @@ const CourseSection = () => {
                 formattedPrice={item.price}
                 instructor={`${item.teachers[0]?.firstName} ${item.teachers[0]?.lastName}`}
                 latestBatch={item.batches?item.batches[0]:null}
-                key={key} />)}
+                key={key} /></Box>)}
         </ListCarousel>}
     </Box>
 }
@@ -184,7 +178,7 @@ const AboutSection = () => {
         justifyContent="space-between">
         {flow.map((item, key) => <Box key={key}>
             <Box
-                width={["100%", "14rem", "25em", "34em"]}
+                width={["100%", "14rem", "25em"]}
                 textAlign="center"
                 borderRadius="20px"
                 borderWidth="2px"
@@ -213,11 +207,19 @@ const Clients= ()=>{
             <Text color="text.100" fontWeight="800" mr="30px">
                 Our Clients
             </Text>
-            <Box className={styles.company} d="flex" alignItems="center" h="100%" overflow="hidden" overflowX="scroll">
+            <Box className={styles.company} d="flex" overflow="hidden" alignItems='center' overflowX="scroll">
                 {
-                    ar.map((i,key)=><a key={key} href={i.link} target="_blank">
+                    ar.map((i,key)=><Box 
+                    h={['80px']}
+                    w={['80px']}
+                    m={'0 20px'}
+                    d='flex'
+                    justifyContent="center"
+                    alignItems="center"
+                    >
+                    <a key={key} className={styles.clientLinks} href={i.link} target="_blank">
                         <Image m="0 20px" objectFit="contain" h="50px" w="120px" src={i.src}/>
-                    </a>)
+                    </a></Box>)
                 }
             </Box>
         </Box>
@@ -263,7 +265,7 @@ const Testimonials = () => {
                         />
                         {data.linkedIn && <AiFillLinkedin color="#0077b6" size="20px" />}
                     </Box>
-                    <Box maxW={randomAr.includes(key) ? "28rem" : "19rem"} minW={["18rem", randomAr.includes(key) ? "28rem" : ""]} whiteSpace="break-spaces">
+                    <Box maxW={randomAr.includes(key) ? "28rem" : "19rem"} minW={['11em',"18rem", randomAr.includes(key) ? "28rem" : ""]} whiteSpace="break-spaces">
                         <Text>{data.review}</Text>
                         <Box d="flex" alignItems="center" justifyContent="flex-end" width="100%">
                             <Box bg="primary.200"

@@ -102,6 +102,11 @@
         height: 120px !important;
         width: 120px !important;
         margin-bottom: 10px;
+        @media (max-width:450px) {
+            height: 80px !important;
+            width: 80px !important;
+            margin-right: 5px;
+        }
     }
 }
 .company::-webkit-scrollbar {
@@ -119,5 +124,10 @@
             height: 55px;
             width: 130px;
         }
+    }
+}
+.clientLinks{
+    @media (max-width:450px) {
+        width: 80px;
     }
 }

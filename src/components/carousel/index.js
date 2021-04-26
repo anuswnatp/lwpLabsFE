@@ -1,5 +1,5 @@
-import Styles from "./styles.module.scss"
 import React, { useEffect, useState } from 'react';
+import Styles from "./styles.module.scss"
 import {
     Carousel,
     CarouselItem,
@@ -7,29 +7,8 @@ import {
     CarouselIndicators,
     CarouselCaption
 } from 'reactstrap';
-import slide1 from "../../images/2220.jpg"
-import slide2 from "../../images/2943.jpg"
-import slide3 from "../../images/4701915.jpg"
 import { getBanners } from "../../../services/api/banners.api";
 import { url } from "../../../services/api/api.url";
-
-// const items = [
-//     {
-//         src: slide1,
-//         altText: 'Slide 1',
-//         caption: 'Slide 1'
-//     },
-//     {
-//         src: slide2,
-//         altText: 'Slide 2',
-//         caption: 'Slide 2'
-//     },
-//     {
-//         src: slide3,
-//         altText: 'Slide 3',
-//         caption: 'Slide 3'
-//     }
-// ];
 
 const CustomCarousel = (props) => {
     useEffect(()=>{
@@ -42,7 +21,9 @@ const CustomCarousel = (props) => {
         let carouselData=data.map(i=>({
             src:`${url}${i.images[0].url}`,
             altText:i.images[0].name,
-            caption:i.images[0].name
+            caption:i.descriptions || null,
+            title:i.title|| null,
+            link:i.link||null
         }))
         setItem(carouselData) 
     }
@@ -75,7 +56,7 @@ const CustomCarousel = (props) => {
                 key={item.src}
             >
                 <img className={Styles.slides} src={item.src} alt={item.altText} />
-                {/* <CarouselCaption className={Styles.captions} captionText={item.caption} captionHeader={item.caption} /> */}
+                {(item.caption || item.title) &&  <CarouselCaption className={Styles.captions} captionText={item.caption} captionHeader={item.title} />}
             </CarouselItem>
         );
     });

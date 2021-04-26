@@ -9,8 +9,8 @@ function Btn({children,onClick,size="lg",primary,bgColor, color="#fff", style={c
         className={Styles.btn}
         width="fit-content"
         color={color}
-        bg={bgColor || primary?"primary.100":"primary.300"}
-        onClick={()=>onClick()}
+        bg={bgColor?bgColor : primary?"primary.100":"primary.300"}
+        onClick={()=>onClick()||null}
         size={size}
         colorScheme="blue"
         >

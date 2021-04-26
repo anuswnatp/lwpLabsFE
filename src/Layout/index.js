@@ -9,10 +9,11 @@ const ReactMarkdown = require('react-markdown')
 export default function Layout({ children }) {
     const [isOpen, setOpen] = useState(true)
     const [msg, setMsg] = useState("")
+    const [, setUpdate] = useState(1)
     const getAlert= async ()=>{
-        await axiosInstance.get("/offer").then((data)=>{
+        await axiosInstance.get("/offers").then((data)=>{
+            setMsg(data.data[0].offer)
             setOpen(true)
-            setMsg(data.data.offer)
         }).catch((err)=>console.error(err))
     }
     useEffect(()=>{
@@ -21,7 +22,7 @@ export default function Layout({ children }) {
     return (
         <>
             <Header />
-            {isOpen && <Box width="100%"
+            {isOpen && msg && <Box width="100%"
                 minHeight="40px"
                 d="flex"
                 p="0 15px"
@@ -31,7 +32,7 @@ export default function Layout({ children }) {
                 <Box
                 flex="2"
                 bg="transparent"
-                color="#fff"
+                color="#fff"    
                 w="100%"
                 >
                     <ReactMarkdown plugins={[gfm]} children={msg}/>
