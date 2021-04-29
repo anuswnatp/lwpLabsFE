@@ -1,7 +1,6 @@
+import React, { useEffect, useState } from 'react';
 import { Box, Flex, Text, Image, Button, TabPanel,
      TabPanels,useDisclosure } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import BannerCarousel from '../../components/carousel'
 import CourseCard from '../../components/courseCard'
 import { setAllTrendingCourseData, setAllTrendingBatchData } from "../../../services/redux/actions/courses"
@@ -30,6 +29,7 @@ import oracle from "../../images/company/oracle.png"
 import amazon from "../../images/company/amazon.png"
 import VideoPlayer from "../../components/videoPlayer"
 import { navigate } from 'gatsby'
+import { useDispatch, useSelector } from 'react-redux'
 function Home(props) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const dispatch = useDispatch()
@@ -68,7 +68,7 @@ function Home(props) {
                                 Call us for free Workshop:
                             </Text>
                             <Text>
-                                
+
                             </Text>
                         </Box>
                     </SectionDivider>
@@ -209,7 +209,7 @@ const Clients= ()=>{
             </Text>
             <Box className={styles.company} d="flex" overflow="hidden" alignItems='center' overflowX="scroll">
                 {
-                    ar.map((i,key)=><Box 
+                    ar.map((i,key)=><Box
                     h={['80px']}
                     w={['80px']}
                     m={'0 20px'}
