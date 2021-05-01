@@ -5,7 +5,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { newTheme } from "./src/components/constants/chakraStyles"
 import { Provider } from 'react-redux'
 import configureStore from './services/redux/configureStore';
-let store=configureStore()
+let store = configureStore()
 ////////////////////////////////////////////////////////////////////////////////////////////
 // Logs when the client route changes
 // export const onRouteUpdate = ({ location, prevLocation }) => {
@@ -24,10 +24,10 @@ export const wrapPageElement = ({ element, props }) => {
 //using chakra css
 export const wrapRootElement = ({ element }) => {
     return (
-        <ChakraProvider theme={newTheme}>
-            <Provider store={store}>
-            {element}
+        <Provider store={store}>
+            <ChakraProvider theme={newTheme}>
+                {element}
+            </ChakraProvider>
         </Provider>
-        </ChakraProvider>
     )
 }

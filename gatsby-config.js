@@ -12,7 +12,7 @@ module.exports = {
         {
             resolve: 'gatsby-source-strapi',
             options: {
-                apiURL: 'http://localhost:8001',
+                apiURL: 'https://evening-mesa-71677.herokuapp.com',
                 contentTypes: [ // List of the Content Types you want to be able to request from Gatsby.
                     'Courses'
                 ],
@@ -41,6 +41,7 @@ module.exports = {
     ],
     proxy: {
         prefix: "/api",
-        url: `http://localhost:8001`,
+        url: "https://evening-mesa-71677.herokuapp.com" //heroku
+        // `http://localhost:8001`, //local
     },
 }
