@@ -7,8 +7,8 @@ const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTE3NGVkOThjZjIwM
 // const local= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTE3NGVkOThjZjIwMDI1ZTI2NjRjMiIsImlhdCI6MTYxODk0MTc1NSwiZXhwIjoxNjIxNTMzNzU1fQ.INajcKpVYI_3i3b60qQgGV0l3pVFfD5X85tfzn-dPMM"
 const axiosInstance = axios.create({
   baseURL:
-  // "https://evening-mesa-71677.herokuapp.com", //heroku
-  "http://localhost:8001", //local
+  "https://evening-mesa-71677.herokuapp.com", //heroku
+  // "http://localhost:8001", //local
   headers: { Authorization: `Bearer ${token}` },
 })
 
