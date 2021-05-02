@@ -17,7 +17,7 @@ const CustomCarousel = (props) => {
     const[items,setItem]=useState([])
     const getAllData=async()=>{
         let data= await getBanners()
-        console.log(data);
+        // console.log(data);
         let carouselData=data.map(i=>({
             src:`${url}${i.images[0].url}`,
             altText:i.images[0].name,
@@ -25,7 +25,7 @@ const CustomCarousel = (props) => {
             title:i.title|| null,
             link:i.link||null
         }))
-        setItem(carouselData) 
+        setItem(carouselData)
     }
     const [activeIndex, setActiveIndex] = useState(0);
     const [animating, setAnimating] = useState(false);

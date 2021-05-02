@@ -6,7 +6,7 @@ import Home from "./home";
 const IndexPage = () => {
   return (
       <main>
-        <title>Training Wale</title>
+        <title>LWP Labs</title>
           <Home/>
       </main>
   )

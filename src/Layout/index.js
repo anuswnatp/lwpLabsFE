@@ -5,8 +5,13 @@ import { Box} from "@chakra-ui/react"
 import { GiCancel} from "react-icons/gi"
 import axiosInstance from "../../axiosConfig"
 import gfm from 'remark-gfm'
+import { useDispatch, useSelector } from "react-redux"
+import BatchModal from "../components/batchModal"
+import { modal } from "../../services/redux/actions/courses"
 const ReactMarkdown = require('react-markdown')
 export default function Layout({ children }) {
+  const dispatch = useDispatch()
+  const modalOpen = useSelector(state =>state.course.modal)
     const [isOpen, setOpen] = useState(true)
     const [msg, setMsg] = useState("")
     const [, setUpdate] = useState(1)
@@ -22,6 +27,13 @@ export default function Layout({ children }) {
     return (
         <>
             <Header />
+            <BatchModal
+                  isOpen={modalOpen}
+                  onClose={() => dispatch(modal(false))}
+                //   batches={batches}
+                modalTitle="Lets Get Started!"
+                  title="free-Demo"
+                />
             {isOpen && msg && <Box width="100%"
                 minHeight="40px"
                 d="flex"
@@ -32,7 +44,7 @@ export default function Layout({ children }) {
                 <Box
                 flex="2"
                 bg="transparent"
-                color="#fff"    
+                color="#fff"
                 w="100%"
                 >
                     <ReactMarkdown plugins={[gfm]} children={msg}/>
@@ -40,6 +52,7 @@ export default function Layout({ children }) {
                 <GiCancel onClick={()=>setOpen(false)} color="#fff" size={20}/>
             </Box>}
             <div style={{ minHeight: "60vh" }}>
+
                 {children}
             </div>
             <Footer />

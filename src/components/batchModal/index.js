@@ -20,14 +20,14 @@ import Btn from "../btn";
 import { getAllFreeDemo } from "../../../services/api/free-demo";
 import Loader from "../loader";
 import { Link } from "gatsby";
-const BatchModal = ({ isOpen, onClose, batches,title }) => {
+const BatchModal = ({ isOpen, onClose, batches,title,modalTitle="" }) => {
 const [enroll,setEnroll]=React.useState(false);
 const [demo,setDemo]=React.useState(false);
 React.useEffect(()=>{
   setEnroll(false)
 },[isOpen])
 React.useEffect(()=>{
-if(isOpen==='free-Demo'){
+if(isOpen==='free-Demo' || title==="free-Demo"){
   setEnroll(true)
   setDemo(true)
 }
@@ -36,13 +36,13 @@ if(isOpen==='free-Demo'){
     <Modal isOpen={isOpen} size="lg" onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-      <ModalHeader 
-      borderRadius="5px 5px 0 0" 
-      backgroundImage={"linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%)"} 
+      <ModalHeader
+      borderRadius="5px 5px 0 0"
+      backgroundImage={"linear-gradient(95deg,#64afef,#248ae4 50%,#244ee4 100%)"}
       color="#fff"
       d="flex"
       alignItems='center'
-      >Available Batches
+      >{modalTitle?modalTitle:enroll?`Enroll`:`Available Batches`}
       <ModalCloseButton marginTop='5px' color="#fff" className="modalCross" />
       </ModalHeader>
         <ModalBody padding='20px'>
@@ -122,8 +122,8 @@ const DemoList=({title})=>{
       {Object.keys(list).map((i,k)=>{
         return <ul
         id={title.includes(i)?title:`${k}_course`}
-        style={{border:title.includes(i)?'2px solid #f47523':'none'}} 
-        className={styles.list} 
+        style={{border:title.includes(i)?'2px solid #f47523':'none'}}
+        className={styles.list}
         key={k}>
           <Text color={title.includes(i)?'#f47523':''} fontWeight={700}>
             {i}

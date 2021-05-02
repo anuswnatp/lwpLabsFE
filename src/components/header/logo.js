@@ -5,19 +5,19 @@ import { navigate } from "gatsby"
 export default function Logo(props) {
     return (
         <Box {...props}>
-            <Heading 
+            <Heading
             cursor="pointer"
             onMouseDown={()=>navigate("/")}
             onTouchStart={()=>navigate("/")}
-            as="h1" 
-            size="lg" 
+            as="h1"
+            size="lg"
             letterSpacing={"-.1rem"}>
                 LwpLabs.com
             </Heading>
-            <Text 
+            <Text
             fontSize="14px"
             textAlign="center"
-            color="highlighter.100">
+            color={{sm:"#ff8f00",md:"#ff8f00",lg:"highlighter.100",xl:"highlighter.100"}}>
                 Learn with Projects
             </Text>
         </Box>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Flex, Text, Image, Button, TabPanel,
-     TabPanels,useDisclosure } from '@chakra-ui/react'
+     TabPanels,useDisclosure, Center } from '@chakra-ui/react'
 import BannerCarousel from '../../components/carousel'
 import CourseCard from '../../components/courseCard'
-import { setAllTrendingCourseData, setAllTrendingBatchData } from "../../../services/redux/actions/courses"
+import { setAllTrendingCourseData, setAllTrendingBatchData, modal } from "../../../services/redux/actions/courses"
 import styles from "./styles.module.scss"
 import Consult from "../../images/consult.jpg"
 import Btn from '../../components/btn'
@@ -30,6 +30,7 @@ import amazon from "../../images/company/amazon.png"
 import VideoPlayer from "../../components/videoPlayer"
 import { navigate } from 'gatsby'
 import { useDispatch, useSelector } from 'react-redux'
+import { getTestimonials } from '../../../services/api/testimonials.api';
 function Home(props) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const dispatch = useDispatch()
@@ -46,9 +47,15 @@ function Home(props) {
     //     let data = await getAllBatches(true)
     //     dispatch(setAllTrendingBatchData(data))
     // }
+    const [reviews,setReviews]=useState([])
     useEffect(() => {
         getAllTrendingCourse()
         getBanners()
+        getTestimonials(true).then(data=>{
+            setReviews(data.data)
+        }).catch(err=>{
+            setReviews([])
+        })
         // getAllTrendingBatches()
     }, [])
     return (
@@ -63,16 +70,16 @@ function Home(props) {
                     </Box>
                     <Counselling onOpen={onOpen} />
                     <SectionDivider>
-                        <Box>
-                            <Text color="#fff">
-                                Call us for free Workshop:
+                        <Center h="100%" flexWrap="wrap" justifyContent="space-around" color="#fff" display="flex" alignItems="center">
+                            <Text fontWeight="800" fontSize='1.5em'>
+                                Call us for free Workshop or Enquiry:
                             </Text>
-                            <Text>
-
+                            <Text fontWeight="800" fontSize='1.5em'>
+                                {`(+91)8688653287`}
                             </Text>
-                        </Box>
+                        </Center>
                     </SectionDivider>
-                    <Testimonials />
+                    <Testimonials data={reviews} trending={true}/>
                     <Clients/>
                 </Box>
             </div>
@@ -225,27 +232,20 @@ const Clients= ()=>{
         </Box>
     )
 }
-const Testimonials = () => {
-    let data = {
-        name: "Mohammad Ali",
-        linkedIn: "www.linkedin.com",
-        review: "Rahul has been amazing through out the course. You will feel the passion he has towards teaching. Goes above and beyond to make sure we understand the concept well. Good motivator as well. I will definitely recommend taking training from him.",
-        course: {
-            title: "DevOps by Rahul Chaudhury",
-            id: "600ac8a4b24fd92eebd9bd82"
-        },
-        designation: "Devops Engineer"
-    }
+export const Testimonials = ({data=[],trending=false}) => {
+    const [reviews,setReviews]=useState([])
+    useEffect(()=>{
+        setReviews(data)
+    },[data])
     const [avatarGenerator, setavatarGenerator] = useState(null);
-    let reviews = Array(6).fill(data)
+    // let reviews = data.data
     const randomize = () => {
         setavatarGenerator(avatarGenerator.randomize());
     }
     let randomAr = [1, 2, 5, 6, 8, 9]
-    // randomize()
-    // useEffect(()=>randomize(),[])
-    return <Box p={5}>
-        <Text mb="20px" textAlign="center" color="primary.100" fontWeight="500" fontSize="3xl">Empowering Students Around the World</Text>
+    if(reviews.length){
+        return <Box p={5}>
+        {trending && <Text mb="20px" textAlign="center" color="primary.100" fontWeight="500" fontSize="3xl">Empowering Students Around the World</Text>}
         <Flex flexWrap="wrap" justifyContent="space-around">
             {
                 reviews.map((data, key) => <Flex
@@ -281,5 +281,8 @@ const Testimonials = () => {
             }
         </Flex>
     </Box>
+    }else{
+        return <div/>
+    }
 }
 

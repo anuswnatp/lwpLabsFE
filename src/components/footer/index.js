@@ -14,14 +14,15 @@ const MenuItems = ({ children, isLast, to = "/", ...rest }) => (
     </Link>
 );
 function Footer() {
+    const size='1.5em'
     return (
-        <Flex as="footer">
-            <Box bg="primary.100"
+        <Flex as="footer" bg="primary.100" minHeight="200px" alignItems="end" justifyContent="flex-end" flexDirection="column">
+            <Box
                 width="100%"
                 textAlign="center"
                 p="4"
             >
-                <Stack
+                {/* <Stack
                     spacing={1}
                     color="white"
                     align="center"
@@ -37,20 +38,21 @@ function Footer() {
                             </MenuItems>)
                         }
                     </Box>
-                </Stack>
-                <Stack 
+                </Stack> */}
+                <Stack
                 alignItems="center"
                 justifyContent="center"
                 textAlign="center"
                 direction="row"
                 color="#e5e5e5"
                 spacing={2}
-                pb="3"
+                pb="10px"
+                marginTop="10px"
                 >
-                        <MenuItems><SiFacebook/></MenuItems>
-                        <MenuItems><SiInstagram/></MenuItems>
-                        <MenuItems><SiLinkedin/></MenuItems>
-                        <MenuItems><SiSlack/></MenuItems>
+                        <MenuItems><SiFacebook size={size}/></MenuItems>
+                        <MenuItems><SiInstagram size={size}/></MenuItems>
+                        <MenuItems><SiLinkedin size={size}/></MenuItems>
+                        <MenuItems><SiSlack size={size}/></MenuItems>
                 </Stack>
                 <Text color="white"> All Rights Reserved 2021 | <span style={{ color: "#e5e5e5" }}>LearnwithProjects.com</span></Text>
             </Box>

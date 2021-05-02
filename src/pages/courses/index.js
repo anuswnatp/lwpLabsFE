@@ -29,12 +29,12 @@ const Courses = () => {
   };
 
   return (
-    <div>
+    <div style={{padding:'20px'}}>
       <Text
         mb="20px"
         textAlign="center"
         color="primary.100"
-        fontWeight="500"
+        fontWeight="700"
         fontSize="3xl"
       >
         All Courses

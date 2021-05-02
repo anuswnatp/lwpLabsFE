@@ -1,7 +1,8 @@
 import {
     COURSE_BATCH_FETCHED_ALL,
     COURSE_DATA_FETCHED_ALL,
-    ALL_COURSE_DATA
+    ALL_COURSE_DATA,
+    MODAL
 } from "./actionTypes"
 
 /* dispatches action to set the Course data array */
@@ -17,5 +18,9 @@ export const setAllCourseData = (data) => ({
 
 export const setAllTrendingBatchData= (data)=>({
     type: COURSE_BATCH_FETCHED_ALL,
+    payload:data
+})
+export const modal= (data)=>({
+    type: MODAL,
     payload:data
 })

@@ -114,7 +114,7 @@ let randomAr = [1, 2, 5, 6, 8, 9]
     try {
       let res = await axiosInstance.get(`/courses/${courseId}`);
       setCourse(res.data);
-      console.log(res.data);
+      // console.log(res.data);
       setBatches(res.data.batches);
       setLoading(false);
     } catch (err) {
@@ -418,8 +418,8 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                     </Text>
                     <div style={{ display: "flex" }}>
                        <AvatarGenerator
-                            width={50} 
-                            height={50} 
+                            width={50}
+                            height={50}
                             sizing={2}
                             ref={(el) => {
                                 setavatarGenerator(el);
@@ -434,7 +434,7 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                         {course.testimonial.linkedin &&
                           <Link to={course.testimonial.linkedin}><FaLinkedin color="#1f3888"/></Link>}
                         {
-                          course.testimonial.designation && 
+                          course.testimonial.designation &&
                           <Text>{course.testimonial.designation}</Text>
                         }
                       </div>
@@ -617,12 +617,12 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                     onClick={()=>setModalOpen('free-Demo')}
                     bgColor="linear-gradient(126deg,#f5a623,#f76b1c)"
                     style={{ margin: "8px 0", width: "75%" }}
-                  >Free Demo</Btn>
+                  ><Text color="#fff" p="15px">Free Demo</Text></Btn>
 
                   <Btn size="lg"
                     style={{ width: "75%" }}
                     onClick={() => setModalOpen(true)}
-                  >Enroll Now</Btn>
+                  ><Text color="#fff" p="15px">Enroll Now</Text></Btn>
 
                   <div className={styles.boxIncludes}>
                     <Text as="h6">This course includes:</Text>

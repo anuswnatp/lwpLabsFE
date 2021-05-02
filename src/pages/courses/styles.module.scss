@@ -3,6 +3,13 @@
 .cardContainer {
     display: flex;
     flex-wrap: wrap;
+    min-height: 60vh;
+    @media (max-width:1024) {
+        min-height: 75vh;
+    }
+    @media (max-width:500px) {
+        justify-content: center;
+    }
 }
 
 .card {

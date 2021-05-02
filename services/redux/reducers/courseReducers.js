@@ -1,13 +1,14 @@
 import {
     COURSE_BATCH_FETCHED_ALL,
     COURSE_DATA_FETCHED_ALL,
-    ALL_COURSE_DATA
+    ALL_COURSE_DATA,MODAL
 } from "../actions/actionTypes"
 
 const initialState = {
     allCourses: [],
     trendingCourses: [],
-    trendingBatches: []
+    trendingBatches: [],
+    modal:false
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -29,6 +30,11 @@ export default (state = initialState, { type, payload }) => {
             return  {
                 ...state,
                 trendingBatches:payload}
+        }
+        case MODAL: {
+            return  {
+                ...state,
+                modal:payload}
         }
         default:
             return state
