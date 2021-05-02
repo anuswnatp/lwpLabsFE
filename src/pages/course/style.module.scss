@@ -1,0 +1,237 @@
+@import "../global.scss";
+
+.courseContainer {
+  label {
+    color: $Primary;
+    font-size: 24px;
+    font-weight: 800;
+  }
+
+  p {
+    color: $highlighter;
+  }
+}
+
+.accordion {
+  border: none;
+  box-shadow: 1px 3px 8px 0px #c1c1c1;
+  border-radius: 5px;
+  margin: 15px;
+  button{
+    &:active, &:focus{
+      box-shadow: none;
+      outline: none;
+    }
+  }
+}
+
+.showMore {
+  display: flex;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(180deg, transparent, #3b80c77d);
+}
+
+.banner {
+  background-color: #00081b;
+  box-shadow: 0 0 7px 3px #868686;
+  padding: 35px 0;
+  background-image: url("https://awv3node-homepage.surge.sh/build/assets/stars.svg");
+  background-size: cover;
+}
+
+.bannerContainer {
+  // margin-left: 10%;
+  justify-content: center;
+  padding: 10px;
+  margin-left: 6%;
+  line-height: 30px;
+
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  p {
+    color: #fff;
+    font-size: 18px;
+  }
+}
+
+.bannerSpan {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.badgeColor {
+  color: gold;
+  border: solid 1px;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+
+.learnSection {
+  border: 1px solid #eee;
+  overflow: hidden;
+
+
+  .learnSectionHeader {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 15px;
+  }
+
+  .learnSectionSpan {
+    line-height: 35px;
+    font-size: 17px;
+  }
+}
+
+.fixedBoxContainer {
+  // width: max-content !important;
+  height: max-content;
+  padding: 27px 30px;
+  text-align: justify;
+  background-color: #fff;
+
+  h3 {
+    text-align: start;
+    align-self: start;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.stickyBox {
+  position: sticky;
+  top: 85px;
+  box-shadow: -1px 6px 8px 9px #d2e6ff69;
+  border-radius: 7px 7px;
+}
+
+.absoluteBox {
+  // position: absolute;
+  margin-top: 20px;
+  box-shadow: -1px -2px 8px 9px #d2e6ff69;
+  border-radius: 7px 7px;
+}
+
+.boxIncludes {
+  margin-left: 10%;
+  width: 100%;
+
+  h6 {
+    text-align: start;
+    align-self: start;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-top: 10px;
+  }
+
+  .boxText {
+    color: #808080;
+    font-size: 15px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+  }
+}
+
+// .btnDemo {
+//   width: 90% !important;
+//   font-size: 18px;
+//   font-weight: 700;
+//   margin: 5% auto;
+//   color: #fff !important;
+//   background-color: #e73d3a;
+// }
+
+.btnBuy {
+  width: 90% !important;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 5px auto;
+  color: #0f7c90 !important;
+  border: 1px solid #2896a9;
+}
+
+// .requirementSection {
+//   margin: 40px;
+// }
+
+.requirementSectionHeader {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.featuredSection {
+  margin: 40px;
+}
+
+.featuredSectionContainer {
+  background: #fbfbf8;
+  border: 1px solid #dcdacb;
+  border-radius: 4px;
+  padding: 2.4rem;
+  canvas{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+}
+
+.featureStarContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.featuredSectionSpan {
+  color: #73726c;
+  margin-left: 0.8rem;
+}
+
+.trendingCourseSection {
+  margin: 40px;
+}
+
+// .trendingCourseContainer{
+
+// }
+
+.teachersSection {
+  margin: 40px;
+}
+
+.descriptionSection {
+  margin: 40px;
+}
+
+.descriptionSectionHedaer {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.showMoreBtn {
+  color: #0f7c90;
+
+  &:hover {
+    text-decoration: none !important;
+  }
+
+  &:focus {
+    box-shadow: none !important;
+    outline: none;
+  }
+}

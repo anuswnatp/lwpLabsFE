@@ -1,0 +1,16 @@
+@import "../../pages/global.scss";
+
+.batchContainer{
+    box-shadow: 1px 3px 8px 0px #c1c1c1;
+    border: none;
+    button{
+        align-self: center;
+        color: white;
+        &:hover{
+            color: white;
+        }
+    }
+    p{
+        font-weight: 600;
+    }
+}

@@ -1,0 +1,15 @@
+@import "../../pages/global.scss";
+
+.btn{
+    box-shadow: -1px 3px 8px 1px #9a9a9a;
+    border-radius: 30px !important;
+    // background: $purple !important;
+    &:hover{
+        transform: translatey(-1px);
+        box-shadow: 0 6px 12px rgba(9,30,66,.2);
+        outline: none;
+    }
+    &:focus,&:active{
+        outline: none;
+    }
+}

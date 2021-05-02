@@ -1,0 +1,18 @@
+@import "../../pages/global.scss";
+.tabs{
+    div{
+        border-bottom: none;
+    }
+    button{
+        &:hover{
+            color: $Primary;
+        }
+        &:focus,&:active{
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    }
+    .tabPanel{
+        justify-content: space-evenly;
+    }
+}

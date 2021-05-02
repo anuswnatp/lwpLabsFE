@@ -1,0 +1,40 @@
+@import "../../pages/global.scss";
+
+.slides {
+    object-fit: cover;
+    height: 60vh;
+    width: 100%;
+    text-align: left !important;
+    div{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    }
+}
+#overlay{
+    position: absolute;
+    height: 60vh;
+    width: 100%;
+    background-color:#073b4c3a;
+    z-index: 1;
+}
+
+.captions{
+    background: $boxColor;
+    text-align: left !important;
+    div{
+        text-align: left;
+    }
+    h3{
+    font-size: 25px;
+    color: $pink;
+    font-weight: 800;
+    }
+    p{
+        color:$highlighter;
+    }
+}
+.carousel-caption{
+    text-align: left;
+}
