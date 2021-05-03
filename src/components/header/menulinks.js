@@ -15,7 +15,7 @@ const MenuItems = ({ children, isLast, to = "/", ...rest }) => (
         </Text>
     </Link>
 );
-function MenuLinks({ show }) {
+function MenuLinks({ show=true }) {
     const dispatch = useDispatch()
     return (
         <Box
