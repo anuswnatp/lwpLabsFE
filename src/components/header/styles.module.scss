@@ -36,3 +36,10 @@
         flex-basis: 100%;
     }
 }
+
+.logoText{
+    color:"#073b4c";
+    @media (max-width:1023px) {
+        color:#ff8f00;
+    }
+}

@@ -1,7 +1,7 @@
 import React from "react"
 import { Box, Heading, Text } from "@chakra-ui/react"
 import { navigate } from "gatsby"
-
+import Styles from "./styles.module.scss"
 export default function Logo(props) {
     return (
         <Box {...props}>
@@ -17,7 +17,8 @@ export default function Logo(props) {
             <Text
             fontSize="14px"
             textAlign="center"
-            color={{sm:"#ff8f00",md:"#ff8f00",lg:"highlighter.100",xl:"highlighter.100"}}>
+            className={Styles.logoText}
+            >
                 Learn with Projects
             </Text>
         </Box>
