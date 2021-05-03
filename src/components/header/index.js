@@ -6,13 +6,8 @@ import Logo from "./logo"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { AiOutlineCloseCircle } from "react-icons/ai"
 const Header = props => {
-    const [show, setShow] = React.useState(true);
+    const [show, setShow] = React.useState(false);
     const handleToggle = () =>{ setShow(!show) };
-    React.useEffect(()=>{
-        if(window.screen.width<1023){
-            setShow(false)
-        }
-    },[])
     return (
         <Flex
             className={Styles.navBarContainer}
@@ -31,7 +26,7 @@ const Header = props => {
             {...props}
         >
             <Logo />
-            <Box className={Styles.burger} onClick={()=>handleToggle()}>
+            <Box display={['block','none']} onClick={()=>handleToggle()}>
                 {show ? <AiOutlineCloseCircle size={25} /> : <GiHamburgerMenu />}
             </Box>
             <MenuLinks show={show} />

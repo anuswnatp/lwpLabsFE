@@ -15,12 +15,12 @@ const MenuItems = ({ children, isLast, to = "/", ...rest }) => (
         </Text>
     </Link>
 );
-function MenuLinks({ show=true }) {
+function MenuLinks({ show }) {
     const dispatch = useDispatch()
     return (
         <Box
-            style={{display:show ? "block" : "none"}}
-            className={Styles.menu}
+            display={[show ? "block" : "none","block"]}
+            flexBasis={["100%","auto"]}
         >
             <Stack
                 spacing={8}

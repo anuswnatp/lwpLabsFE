@@ -235,3 +235,17 @@
     outline: none;
   }
 }
+
+.alsoBought{
+  text-decoration: none !important;
+  div:nth-child(1){
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 20px;
+  &:hover{
+    box-shadow: 2px 3px 12px 2px #ccc ;
+    padding: 20px;
+    border-radius: 20px;
+  }
+}
+}

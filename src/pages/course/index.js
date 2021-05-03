@@ -465,7 +465,12 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                     </div>
                   </div>
                 </Box>}
-                <Box m={["20px 0", "40px"]}>
+                { (trendingCourse.length ?
+                 trendingCourse.length ===1 ?
+                trendingCourse[0]._id === courseId?
+                false : true : true : false
+                ) &&
+                  <Box m={["20px 0", "40px"]}>
                   <Text
                     as="label"
                     style={{
@@ -479,10 +484,14 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                   <div className={styles.trendingCourseContainer}>
                     {trendingCourse && trendingCourse.length > 0 ?
                       trendingCourse.map((item, key) => (
+                        item._id !== courseId ?
+                        <Link
+                        className={styles.alsoBought}
+                        to={`/course?courseId=${item._id}`}>
                         <div key={key} style={{
                           display: "flex",
                           marginTop: "15px",
-                          marginBottom: "15px",
+                          marginBottom: "15px"
                         }}>
                           <Image
                             style={{ marginRight: "10px" }}
@@ -497,11 +506,12 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                           <div style={{ margin: "0 auto" }}><Text style={{ color: "gold", fontWeight: 600 }}><BsStarFill className={styles.inlineBlock} />{item.ratings || '4.5'}</Text></div>
                           <div><Text style={{ fontWeight: 800 }}>₹{item.price}</Text></div>
                         </div>
+                        </Link> : <div/>
                       )) : null}
 
 
                   </div>
-                </Box>
+                </Box>}
                 {/* <Box m={["20px 0", "40px"]}>
                   <Text
                     as="label"
