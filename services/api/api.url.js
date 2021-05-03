@@ -1,2 +1,2 @@
-export const url= "https://609005dc1cf80500074de7cc--heuristic-austin-ee4bb2.netlify.app/"
+export const url= "https://evening-mesa-71677.herokuapp.com"
 // "http://localhost:8001"

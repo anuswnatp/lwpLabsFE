@@ -7,7 +7,7 @@ import { GiHamburgerMenu } from "react-icons/gi"
 import { AiOutlineCloseCircle } from "react-icons/ai"
 const Header = props => {
     const [show, setShow] = React.useState(true);
-    const handleToggle = () => setShow(!show);
+    const handleToggle = () =>{ setShow(!show) };
     React.useEffect(()=>{
         if(window.screen.width<1023){
             setShow(false)
@@ -31,7 +31,7 @@ const Header = props => {
             {...props}
         >
             <Logo />
-            <Box className={Styles.burger} onClick={()=>handleToggle}>
+            <Box className={Styles.burger} onClick={()=>handleToggle()}>
                 {show ? <AiOutlineCloseCircle size={25} /> : <GiHamburgerMenu />}
             </Box>
             <MenuLinks show={show} />
