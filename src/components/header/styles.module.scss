@@ -22,3 +22,9 @@
         }
     }
 }
+.burger{
+    display: none;
+    @media (max-width:550px) {
+        display: block;
+    }
+}

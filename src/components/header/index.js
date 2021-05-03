@@ -27,7 +27,7 @@ const Header = props => {
             {...props}
         >
             <Logo />
-            <Box display={{ sm: "block",md:"none", lg:"none",xl:"none" }} onClick={handleToggle}>
+            <Box style={Styles.burger} onClick={handleToggle}>
                 {show ? <AiOutlineCloseCircle size={25} /> : <GiHamburgerMenu />}
             </Box>
             <MenuLinks show={show} />
