@@ -24,7 +24,13 @@
 }
 .burger{
     display: none;
-    @media (max-width:550px) {
+    @media (max-width:1023px) {
         display: block;
+    }
+}
+.menu{
+    flex-basis: auto;
+    @media (max-width:1023px) {
+        flex-basis: 100%;
     }
 }

@@ -20,7 +20,7 @@ function MenuLinks({ show }) {
     return (
         <Box
             display={{ sm: show ? "block" : "none", md: "block" }}
-            flexBasis={{ sm: "100%", md: "auto" }}
+            className={Styles.menu}
         >
             <Stack
                 spacing={8}
