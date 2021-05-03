@@ -19,7 +19,7 @@ function MenuLinks({ show=true }) {
     const dispatch = useDispatch()
     return (
         <Box
-            display={{ sm: show ? "block" : "none", md: "block" }}
+            style={{display:show ? "block" : "none"}}
             className={Styles.menu}
         >
             <Stack
