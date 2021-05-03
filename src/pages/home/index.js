@@ -21,12 +21,14 @@ import Form from "../../components/form"
 import SectionDivider from '../../components/sectionDivider'
 import { getBanners } from '../../../services/api/banners.api'
 import tcs from "../../images/company/tcs.png"
-import genpact from "../../images/company/Genpact_horizontal_color_rgb.svg"
+import genpact from "../../images/company/genpact.png"
 import wipro from "../../images/company/wipro.png"
 import mindtree from "../../images/company/mindtree.png"
 import visa from "../../images/company/visa.png"
 import oracle from "../../images/company/oracle.png"
-import amazon from "../../images/company/amazon.png"
+import eduramp from "../../images/company/eduramp.jpeg"
+import edureka from "../../images/company/edureka.png"
+import simplilearn from "../../images/company/simplilearn.png"
 import VideoPlayer from "../../components/videoPlayer"
 import { navigate } from 'gatsby'
 import { useDispatch, useSelector } from 'react-redux'
@@ -204,10 +206,12 @@ const Clients= ()=>{
     const ar=[{src:tcs,link:"https://www.tcs.com/"},
     {src:genpact,link:"https://www.genpact.com/"},
     {src:wipro,link:"https://www.genpact.com/"},
-    {src:amazon,link:"https://www.genpact.com/"},
-    {src:mindtree,link:"https://www.genpact.com/"},
-    {src:visa,link:"https://www.genpact.com/"},
-    {src:oracle,link:"https://www.genpact.com/"},
+    {src:eduramp,link:"https://www.eduramp.in/"},
+    {src:edureka,link:"https://www.edureka.co/"},
+    {src:simplilearn,link:"https://www.simplilearn.com/"},
+    {src:mindtree,link:"https://www.mindtree.com/"},
+    {src:visa,link:"https://www.visa.co.in/"},
+    {src:oracle,link:"https://www.oracle.com/index.html"},
 ]
     return (
         <Box d="flex" minH="120px" alignItems="center" p="0 40px">

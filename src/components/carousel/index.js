@@ -9,10 +9,12 @@ import {
 } from 'reactstrap';
 import { getBanners } from "../../../services/api/banners.api";
 import { url } from "../../../services/api/api.url";
+import { Spinner } from '@chakra-ui/spinner';
 
 const CustomCarousel = (props) => {
+    const [loading, setloading] = useState(true)
     useEffect(()=>{
-        getAllData()
+        getAllData().then(d=>setloading(false)).catch(e=>setloading(false))
     },[])
     const[items,setItem]=useState([])
     const getAllData=async()=>{
@@ -58,11 +60,17 @@ const CustomCarousel = (props) => {
                 <img className={Styles.slides} src={item.src} alt={item.altText} />
                 {(item.caption || item.title) &&  <CarouselCaption className={Styles.captions} captionText={item.caption} captionHeader={item.title} />}
             </CarouselItem>
-        );
+        )
     });
 
     return (
         <div>
+       {     loading? <Spinner
+            color="#6118de"
+            style={{ marginLeft: "50%", marginTop: "50px" }}
+          />
+          :
+          <React.Fragment>
             <div id={Styles.overlay}></div>
             <Carousel
             className={Styles.customCarousel}
@@ -75,6 +83,8 @@ const CustomCarousel = (props) => {
             <CarouselControl className={Styles.controls} direction="prev" directionText="Previous" onClickHandler={previous} />
             <CarouselControl className={Styles.controls} direction="next" directionText="Next" onClickHandler={next} />
         </Carousel>
+        </React.Fragment>
+}
         </div>
     );
 }

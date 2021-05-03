@@ -8,6 +8,8 @@ import gfm from 'remark-gfm'
 import { useDispatch, useSelector } from "react-redux"
 import BatchModal from "../components/batchModal"
 import { modal } from "../../services/redux/actions/courses"
+import { RiWhatsappFill } from "react-icons/ri"
+import styles from "./styles.module.scss"
 const ReactMarkdown = require('react-markdown')
 export default function Layout({ children }) {
   const dispatch = useDispatch()
@@ -51,10 +53,17 @@ export default function Layout({ children }) {
                 </Box>
                 <GiCancel onClick={()=>setOpen(false)} color="#fff" size={20}/>
             </Box>}
-            <div style={{ minHeight: "60vh" }}>
-
+            <div style={{ minHeight: "75vh" }}>
                 {children}
             </div>
+            <a
+        href="https://wa.me/+918688653287"
+        class={styles.whatsapp_float}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <RiWhatsappFill size="2em"/>
+      </a>
             <Footer />
         </>
     )
