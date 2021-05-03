@@ -617,12 +617,12 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                     onClick={()=>setModalOpen('free-Demo')}
                     bgColor="linear-gradient(126deg,#f5a623,#f76b1c)"
                     style={{ margin: "8px 0", width: "75%" }}
-                  ><Text color="#fff" p="15px">Free Demo</Text></Btn>
+                  ><Text style={{color:"#fff"}} p="15px">Free Demo</Text></Btn>
 
                   <Btn size="lg"
                     style={{ width: "75%" }}
                     onClick={() => setModalOpen(true)}
-                  ><Text color="#fff" p="15px">Enroll Now</Text></Btn>
+                  ><Text style={{color:"#fff"}}  p="15px">Enroll Now</Text></Btn>
 
                   <div className={styles.boxIncludes}>
                     <Text as="h6">This course includes:</Text>
