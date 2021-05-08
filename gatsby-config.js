@@ -41,8 +41,7 @@ module.exports = {
     ],
     proxy: {
         prefix: "/api",
-        url:
-        "http://140.238.250.4" //oracle
+        url:"http://140.238.250.4" //oracle
         // `http://localhost:8001`, //local
     },
 }
