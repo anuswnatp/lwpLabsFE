@@ -11,7 +11,7 @@ const token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTE3NGVkOThjZjIwM
 // const local= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTE3NGVkOThjZjIwMDI1ZTI2NjRjMiIsImlhdCI6MTYxMjY5MzcyOCwiZXhwIjoxNjE1Mjg1NzI4fQ.jhuomVo3ojVc5Vws6TNKuUA_4c6TODchFK_CfUyRy1g"
 
 const axiosInstance = axios.create({
-  baseURL:"http://140.238.250.4", //oracle
+  baseURL:"https://admin.lwplabs.com", //oracle
   // "http://localhost:8001", //local
   headers: { Authorization: `Bearer ${token}` },
 })

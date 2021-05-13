@@ -12,7 +12,7 @@ module.exports = {
         {
             resolve: 'gatsby-source-strapi',
             options: {
-                apiURL: 'http://140.238.250.4',
+                apiURL: 'https://admin.lwplabs.com',
                 contentTypes: [ // List of the Content Types you want to be able to request from Gatsby.
                     'Courses'
                 ],
@@ -41,7 +41,7 @@ module.exports = {
     ],
     proxy: {
         prefix: "/api",
-        url:"http://140.238.250.4" //oracle
+        url:"https://admin.lwplabs.com" //oracle
         // `http://localhost:8001`, //local
     },
 }
