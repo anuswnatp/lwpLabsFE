@@ -1,2 +1,2 @@
-export const url= "https://evening-mesa-71677.herokuapp.com"
+export const url= "https://admin.lwplabs.com"
 // "http://localhost:8001"
