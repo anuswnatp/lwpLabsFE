@@ -15,7 +15,7 @@ const MenuItems = ({ children, isLast, to = "/", ...rest }) => (
         </Text>
     </Link>
 );
-function MenuLinks({ show }) {
+function MenuLinks({ show,handleToggle }) {
     const dispatch = useDispatch()
     return (
         <Box
@@ -30,10 +30,10 @@ function MenuLinks({ show }) {
                 pt={[4, 0, 0, 0]}
             >
                 {/* <MenuItems>About us</MenuItems> */}
-                <MenuItems to="/courses">Courses</MenuItems>
-                <MenuItems to="/testimonials">Testimonials</MenuItems>
+                <MenuItems onClick={()=>handleToggle()} to="/courses">Courses</MenuItems>
+                <MenuItems onClick={()=>handleToggle()} to="/testimonials">Testimonials</MenuItems>
                 {/* <Link className={Styles.loginButton} style={{textDecoration:"none"}} to="/Login"> */}
-                <MenuItems>
+                <MenuItems onClick={()=>handleToggle()}>
                 <Center>
                 <Btn size="lg"
                     onClick={()=>dispatch(modal("free-demo"))}

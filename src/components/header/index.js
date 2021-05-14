@@ -29,7 +29,7 @@ const Header = props => {
             <Box display={['block','none']} onClick={()=>handleToggle()}>
                 {show ? <AiOutlineCloseCircle size={25} /> : <GiHamburgerMenu />}
             </Box>
-            <MenuLinks show={show} />
+            <MenuLinks show={show} handleToggle={()=>handleToggle()} />
         </Flex>
     );
 };
