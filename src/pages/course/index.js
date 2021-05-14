@@ -114,7 +114,7 @@ let randomAr = [1, 2, 5, 6, 8, 9]
     try {
       let res = await axiosInstance.get(`/courses/${courseId}`);
       setCourse(res.data);
-      // console.log(res.data);
+      // console.log(res.data.batches);
       setBatches(res.data.batches);
       setLoading(false);
     } catch (err) {
@@ -604,12 +604,12 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                   </div>
                 </Box> */}
               </Box>
-              <div className={`col-4 mx-0 pb-20`}>
+              <div className={`col-md-4 mx-0 pb-20`}>
                 <Box
                   mb="20px"
                   width="100% !important"
                   alignSelf="flex-start"
-                  display={["none", "flex", "flex"]}
+                  display={["flex", "flex", "flex"]}
                   // mt={["0", "0", "30px", "100px"]}
                   className={
                     windowHeight > 350

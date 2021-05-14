@@ -84,7 +84,7 @@ export default function CourseCard({
                 </div>
                 {latestBatch && <Box className={styles.batch}>
                     <Text>Upcoming Batches</Text>
-                    <Text>Start Date: {`${getDate(latestBatch.startDate)}`}</Text>
+                    <Text>Start Date: {`${getDate(latestBatch.startdate)}`}</Text>
                     <Text>End Date: {`${getDate(latestBatch.endDate)}`}</Text>
                 </Box>}
             </Box>

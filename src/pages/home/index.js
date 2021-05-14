@@ -153,7 +153,7 @@ const BatchSection = () => {
         {batchState && <ListCarousel>
             {batchState.map((item, key) => <BatchCard
                 course={item.course}
-                startDate={item.startDate}
+                startDate={item.startdate}
                 endDate={item.endDate}
                 strength={item.strength}
                 instructor={item.instructor}

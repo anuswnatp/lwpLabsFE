@@ -65,7 +65,7 @@ if(isOpen==='free-Demo' || title==="free-Demo"){
                     className={styles.modalBox}
                   >
                     <Text>
-                      <Text fontWeight='600' >Start Date:</Text> {`${getDate(batch.startDate, true)}`}
+                      <Text fontWeight='600' >Start Date:</Text> {`${getDate(batch.startdate, true)}`}
                     </Text>
                     <Text><Text fontWeight='600' color='tomato' >End Date:</Text> {`${getDate(batch.endDate, true)}`}</Text>
                     <Box
@@ -133,7 +133,7 @@ const DemoList=({title})=>{
               <a key={k} href={j.demoLink}>
               {j.demoLink}
             </a>
-            <Text>{`Start Date: ${getDate(j.startDate,true)}`}</Text>
+            <Text>{`Start Date: ${getDate(j.startdate,true)}`}</Text>
             <Text>{`End Date: ${getDate(j.expiryDate,true)}`}</Text>
           </li>
           ))}
