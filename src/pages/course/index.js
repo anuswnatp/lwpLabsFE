@@ -317,11 +317,11 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                                   handleShowLessonDescription(topic._id)
                                 }
                               >
-                                {lesson.descriptions && <Text
-                                  color="#545454 !important"
-                                  mb="10px"
-                                >{lesson.descriptions}</Text>}
-                                <Flex alignItems="center">
+                                {id===0 && lesson.descriptions && <Box className={styles.topicDes} bg="#eaeaea" borderRadius="8px" p="10px" mb="10px">
+                                  <ReactMarkdown plugins={[gfm]} children={lesson.descriptions}/>
+                                </Box>
+                                }
+                                <Flex className={styles.lessonTitle} alignItems="center">
                                   <Text fontWeight="500" cursor="pointer" mr="10px">{topic.title}</Text>
                                   <Box>
                                     {topic.descriptions &&
@@ -337,22 +337,37 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                                   </Box>
                                 </Flex>
                                 {topic.descriptions &&
-                                  <Text
+                                  <Box
                                     ml="10px"
                                     mt="10px"
-                                    color="#545454 !important"
+                                    // color="#545454 !important"
+                                    className={styles.lessonDescription}
                                     style={{
                                       display:
                                         showLessonDescription === topic._id
                                           ? "block"
-                                          : "none",
+                                          : "none"
                                     }}
                                   >
-                                    {topic.descriptions}
-                                  </Text>}
+                                    <ReactMarkdown plugins={[gfm]} children={topic.descriptions}/>
+                                  </Box>}
                               </AccordionPanel>
                             ))
-                            : null}
+                            :(
+                              lesson.descriptions ?
+                              <AccordionPanel
+                                ml="10px"
+                                pb={4}
+                                // key={id}
+                                // onClick={() =>
+                                //   handleShowLessonDescription(topic._id)
+                                // }
+                              >
+                                <Box className={styles.topicDes} bg="#eaeaea" borderRadius="8px" p="10px" mb="10px">
+                                  <ReactMarkdown plugins={[gfm]} children={lesson.descriptions}/>
+                                </Box>
+                                </AccordionPanel>
+                              :null)}
                         </AccordionItem>
                       ))
                       : <Text
