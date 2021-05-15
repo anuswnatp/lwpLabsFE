@@ -181,7 +181,7 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                 direction={["column"]}
                 className={`${styles.bannerContainer} col-md-7 col-sm-12`}>
                 <h1>{course.title}</h1>
-                <p>{shortText(course.description)}</p>
+                <ReactMarkdown plugins={[gfm]} children={shortText(course.description)}/>
                 {course.trending ? (
                   <Badge
                     width="max-content"
