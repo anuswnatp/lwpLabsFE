@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Flex, Text, Image, Button, TabPanel,
-     TabPanels,useDisclosure, Center } from '@chakra-ui/react'
+     TabPanels,useDisclosure, Center, Skeleton, Stack } from '@chakra-ui/react'
 import BannerCarousel from '../../components/carousel'
 import CourseCard from '../../components/courseCard'
 import { setAllTrendingCourseData, setAllTrendingBatchData, modal } from "../../../services/redux/actions/courses"
 import styles from "./styles.module.scss"
-import Consult from "../../images/consult.jpg"
 import Btn from '../../components/btn'
 import ListCarousel from '../../components/listCarousel'
-import live from "../../images/liveClasses.jpg"
-import project from "../../images/project.jpg"
-import job from "../../images/jobSupport.jpg"
 // import Tab from '../../components/tab'
 import { getAllCourses } from "../../../services/api/courses.api"
 import { getAllBatches } from '../../../services/api/batches.api'
@@ -20,6 +16,7 @@ import { AiFillLinkedin } from "react-icons/ai"
 import Form from "../../components/form"
 import SectionDivider from '../../components/sectionDivider'
 import { getBanners } from '../../../services/api/banners.api'
+import { graphql, StaticQuery,useStaticQuery } from "gatsby";
 import tcs from "../../images/company/tcs.png"
 import genpact from "../../images/company/genpact.png"
 import wipro from "../../images/company/wipro.png"
@@ -33,6 +30,7 @@ import VideoPlayer from "../../components/videoPlayer"
 import { navigate } from 'gatsby'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTestimonials } from '../../../services/api/testimonials.api';
+import GatsbyImage from 'gatsby-image';
 function Home(props) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const dispatch = useDispatch()
@@ -49,6 +47,39 @@ function Home(props) {
     //     let data = await getAllBatches(true)
     //     dispatch(setAllTrendingBatchData(data))
     // }
+    const imageData = useStaticQuery(graphql`
+    query MyQuery {
+        live: file(relativePath: { eq: "liveClasses.jpg" }) {
+          childImageSharp {
+            fluid(maxWidth:750
+                quality:10) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        project: file(relativePath: { eq: "project.jpg" }) {
+            childImageSharp {
+              fluid(maxWidth: 750 quality:10) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          },
+          job: file(relativePath: { eq: "jobSupport.jpg" }) {
+                childImageSharp {
+                    fluid(maxWidth: 750 quality:10) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            },
+          consult: file(relativePath: { eq: "consult.jpg" }) {
+                childImageSharp {
+                    fluid(maxWidth: 750) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
+      }
+    `)
     const [reviews,setReviews]=useState([])
     useEffect(() => {
         getAllTrendingCourse()
@@ -65,20 +96,20 @@ function Home(props) {
                 <Form isOpen={isOpen} onClose={onClose}/>
                 <BannerCarousel />
                 <Box>
-                    <AboutSection />
+                    <AboutSection imageData={imageData}  />
                     <VideoPlayer/>
                     <Box background="#c0c0c01a">
                         <CourseSection/>
                     </Box>
-                    <Counselling onOpen={onOpen} />
+                    <Counselling imageData={imageData} onOpen={onOpen} />
                     <SectionDivider>
-                        <Center h="100%" flexWrap="wrap" justifyContent="space-around" color="#fff" display="flex" alignItems="center">
-                            <Text fontWeight="800" fontSize='1.5em'>
-                                Call us for free Workshop or Enquiry:
-                            </Text>
-                            <Text fontWeight="800" fontSize='1.5em'>
+                        <Center h="100%" flexWrap="wrap" justifyContent={["center","space-around"]} textAlign="center" color="#fff" display="flex" alignItems="center">
+                        <a href="https://wa.me/+918688653287" target="_blank"  style={{fontWeight:"800", color:"#fff", fontSize:'1.5em'}}>
+                                Click to call us for free Workshop or Enquiry:
+                            </a>
+                            <a href="https://wa.me/+918688653287" target="_blank"  style={{fontWeight:"800", color:"#fff", fontSize:'1.5em'}}>
                                 {`(+91)8688653287`}
-                            </Text>
+                            </a>
                         </Center>
                     </SectionDivider>
                     <Testimonials data={reviews} trending={true}/>
@@ -90,15 +121,15 @@ function Home(props) {
 
 export default Home
 
-const Counselling = ({onOpen}) => {
+const Counselling = ({onOpen,imageData}) => {
     return <Box>
         <Flex
             alignItems="center"
             direction={['column', "column", "row", "row"]}
             mb={[20, 20, 0, 0]}
         >
-            <Image
-                src={Consult}
+            <GatsbyImage
+                fluid={imageData.consult.childImageSharp.fluid}
                 alt="Consult"
                 className={styles.consultImage}
             />
@@ -117,10 +148,9 @@ const Counselling = ({onOpen}) => {
                     color="highlighter.100"
                     marginTop="10px"
                 >Talk to an Expert to get a clear idea about your goal.
-                    is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown printer took
-                    a galley of type and scrambled it to make a type specimen book.
+                    We know it is hard to understand, what sort of technology can boost your career,
+                    May be year gaps are stopping you from learning again.
+                    No prior knowledge is required to get a Job trust us and give us a Call.
                 </Text>
                 <Btn colorScheme="blue" size="lg" onClick={onOpen} bgColor="primary.100">Consult Now</Btn>
             </Box>
@@ -133,7 +163,7 @@ const CourseSection = () => {
     return <Box as="div">
         <Text mb="20px" textAlign="center" color="primary.100" fontWeight="500" fontSize="3xl">Trending Courses</Text>
         {courseState?.data && <ListCarousel>
-            {courseState?.data?.map((item, key) => <Box onClick={()=>navigate(`/course?courseId=${item._id}`)}>
+            {courseState?.data?.map((item, key) => <Box key={key} onClick={()=>navigate(`/course?courseId=${item._id}`)}>
             <CourseCard
                 imageUrl={item.img}
                 imageAlt={item.title}
@@ -163,20 +193,20 @@ const BatchSection = () => {
     </Box>
 }
 
-const AboutSection = () => {
+const AboutSection = ({imageData}) => {
     const flow = [
         {
-            img: live,
+            img: imageData.live.childImageSharp.fluid,
             alt: "live classes",
             title: "Live Clases"
         },
         {
-            img: project,
+            img: imageData.project.childImageSharp.fluid,
             alt: "Project",
             title: "Project Based Learning"
         },
         {
-            img: job,
+            img: imageData.job.childImageSharp.fluid,
             alt: "Job",
             title: "Job Support"
         }
@@ -195,8 +225,11 @@ const AboutSection = () => {
                 boxShadow="0px 8px 12px 0px #e6e6e6"
                 bg="#fafafa"
             >
-                <Image borderRadius="20px" height={["19rem"]} width="100%"
-                    objectFit={["contain", "contain", "cover", "contain"]} src={item.img} alt={item.alt} />
+                <GatsbyImage
+                fluid={item.img}
+                alt={item.alt}
+                style={{height:'19rem',borderRadius:20}}
+                />
             </Box>
             <Text mt="20px" mb="10px" as="h3" textAlign="center" fontWeight="600" color="highlighter.100">{item.title}</Text>
         </Box>)}
@@ -221,6 +254,7 @@ const Clients= ()=>{
             <Box className={styles.company} d="flex" overflow="hidden" alignItems='center' overflowX="scroll">
                 {
                     ar.map((i,key)=><Box
+                    key={key}
                     h={['80px']}
                     w={['80px']}
                     m={'0 20px'}

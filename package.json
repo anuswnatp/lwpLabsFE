@@ -1,8 +1,8 @@
 {
-  "name": "training-wale",
+  "name": "LWPLabs",
   "version": "1.0.0",
   "private": true,
-  "description": "TrainingWale",
+  "description": "Learn with Projects is a learning platform",
   "author": "Anuswant",
   "keywords": [
     "gatsby"
@@ -30,10 +30,11 @@
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.10.0",
     "gatsby-plugin-catch-links": "^2.9.0",
+    "gatsby-plugin-manifest": "^2.4.2",
     "gatsby-plugin-offline": "^3.9.0",
     "gatsby-plugin-react-helmet": "^3.9.0",
     "gatsby-plugin-sass": "^2.8.0",
-    "gatsby-plugin-sharp": "^2.13.4",
+    "gatsby-plugin-sharp": "^2.14.4",
     "gatsby-source-filesystem": "^2.10.0",
     "gatsby-source-strapi": "0.0.12",
     "gatsby-transformer-sharp": "^2.11.0",

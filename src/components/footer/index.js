@@ -4,14 +4,14 @@ import React from 'react'
 import "../../pages/global.scss"
 import {SiFacebook,SiGmail,SiInstagram,SiLinkedin,SiSlack} from "react-icons/si"
 const MenuItems = ({ children, isLast, to = "/", ...rest }) => (
-    <Link target="_blank" className={`menuLinks`} to={to}>
+    <a target="_blank" className={`menuLinks`} href={to}>
         <Text
             fontSize="14px"
             display="block"
             {...rest}>
             {children}
         </Text>
-    </Link>
+    </a>
 );
 function Footer() {
     const size='1.6em'
