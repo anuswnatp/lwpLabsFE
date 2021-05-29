@@ -19,7 +19,7 @@ export default function Layout({ children }) {
     const [, setUpdate] = useState(1)
     const getAlert= async ()=>{
         await axiosInstance.get("/offers").then((data)=>{
-            setMsg(data.data[0].offer)
+            setMsg(data.data[0].offers)
             setOpen(true)
         }).catch((err)=>console.error(err))
     }

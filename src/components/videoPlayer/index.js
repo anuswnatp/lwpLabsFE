@@ -5,11 +5,7 @@ import styles from "./styles.module.scss"
 import {BsPlayFill} from "react-icons/bs"
 const opts = {
     height: '390',
-    width: '640',
-    playerVars: {
-        // https://developers.google.com/youtube/player_parameters
-        autoplay: 1,
-    },
+    width: '640'
 };
 function VideoPlayer() {
     function _onReady(event) {
@@ -17,13 +13,21 @@ function VideoPlayer() {
         event.target.pauseVideo();
     }
     return (
-        <Flex className={styles.videoPlayer} justifyContent="center" alignItems="center" mb="20px">
+        <Flex className={styles.videoPlayer} justifyContent="center" alignItems="center" p={["10px","0"]} mb="20px">
             <ReactPlayer
             playIcon={<button><BsPlayFill/></button>}
             light={true}
+            controls={true}
             playing={true}
             loop={true}
-            url='https://www.youtube.com/watch?v=1mo0UuAP3WI&t=1192s' />
+            config={{
+                youtube: {
+                  playerVars: {
+                    start: 0
+                  }
+                }
+              }}
+            url='https://www.youtube.com/watch?v=1mo0UuAP3WI&t=0s' />
         </Flex>
     )
 }
