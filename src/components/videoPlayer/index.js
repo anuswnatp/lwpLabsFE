@@ -15,7 +15,9 @@ function VideoPlayer() {
     return (
         <Flex className={styles.videoPlayer} justifyContent="center" alignItems="center" p={["10px","0"]} mb="20px">
             <ReactPlayer
-            playIcon={<button><BsPlayFill/></button>}
+            playIcon={<button><BsPlayFill size="3em" color="rgb(66 66 66)"
+            style={{border: "2px solid #565656",
+                borderRadius: "50%"}}/></button>}
             light={true}
             controls={true}
             playing={true}
