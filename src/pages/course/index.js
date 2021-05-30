@@ -23,6 +23,7 @@ import BatchModal from "../../components/batchModal";
 import axiosInstance from "../../../axiosConfig";
 import { getAllCourses } from "../../../services/api/courses.api";
 import cogoToast from "cogo-toast";
+import lwplabs from "../../images/lwpLabs.png"
 import {
   BsStarFill,
   BsFillExclamationOctagonFill,
@@ -48,6 +49,7 @@ import styles from "./style.module.scss";
 import { getDate } from "../../helperMethod";
 import Btn from "../../components/btn";
 import { Link } from "gatsby";
+import { url } from "../../../services/api/api.url";
 const ReactMarkdown = require('react-markdown')
 const GetStar = ({ star }) => {
   const starCount = parseInt(star);
@@ -222,8 +224,9 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                   maxH={["250px", "250px", "250px"]}
                   maxW={["250px", "250px", "250px"]}
                   borderRadius="12px"
-                  src={course.img}
+                  src={`${url}${course.img[0].url}`}
                   alt="Course Image"
+                  fallbackSrc={lwplabs}
                   objectFit="cover"
                 />
               </Box>

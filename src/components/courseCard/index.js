@@ -3,6 +3,7 @@ import React from 'react'
 import { BsStarFill } from "react-icons/bs"
 import styles from "./styles.module.scss"
 import { AiOutlineStar, AiFillStar } from "react-icons/ai"
+import lwplabs from "../../images/lwpLabs.png"
 // import { Image } from 'react-bootstrap'
 // Sample card from Airbnb
 
@@ -42,7 +43,7 @@ export default function CourseCard({
             as="button"
             onClick={() => { }}
         >
-            <Image src={course.imageUrl} alt={course.imageAlt} />
+            <Image src={course.imageUrl} alt={course.imageAlt} fallbackSrc={lwplabs} />
 
             <Box p="6" bgColor="boxColor" height="10em">
                 <div className={styles.info}>

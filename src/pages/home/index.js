@@ -31,6 +31,7 @@ import { navigate } from 'gatsby'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTestimonials } from '../../../services/api/testimonials.api';
 import GatsbyImage from 'gatsby-image';
+import { url } from '../../../services/api/api.url';
 function Home(props) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const dispatch = useDispatch()
@@ -99,7 +100,7 @@ function Home(props) {
                     <AboutSection imageData={imageData}  />
                     <VideoPlayer/>
                     <Box background="#c0c0c01a">
-                        <CourseSection/>
+                        <CourseSection url={url}/>
                     </Box>
                     <Counselling imageData={imageData} onOpen={onOpen} />
                     <SectionDivider>
@@ -158,14 +159,14 @@ const Counselling = ({onOpen,imageData}) => {
     </Box>
 }
 
-const CourseSection = () => {
+const CourseSection = ({url}) => {
     const courseState = useSelector(state => state.course.trendingCourses)
     return <Box as="div">
         <Text mb="20px" textAlign="center" color="primary.100" fontWeight="500" fontSize="3xl">Trending Courses</Text>
         {courseState?.data && <ListCarousel>
             {courseState?.data?.map((item, key) => <Box key={key} onClick={()=>navigate(`/course?courseId=${item._id}`)}>
             <CourseCard
-                imageUrl={item.img}
+                imageUrl={`${url}${item.img[0].url}`}
                 imageAlt={item.title}
                 title={item.title}
                 rating={item.ratings}
