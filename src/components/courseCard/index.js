@@ -35,7 +35,7 @@ export default function CourseCard({
         var hour = a.getHours();
         var mins = a.getMinutes();
         let min= mins>0?mins:`00`
-        var time = date + ' ' + month + ' ' + year + ' @' + hour + ':' + min + ` ${hour>12?`AM `:`PM `}` + " IST";
+        var time = date + ' ' + month + ' ' + year + ' @' + hour + ':' + min + " IST";
         return time;
     }
     return (
@@ -83,10 +83,13 @@ export default function CourseCard({
                             ))}
                     </Box>
                 </div>
-                {latestBatch && <Box className={styles.batch}>
+                {latestBatch ? <Box className={styles.batch}>
                     <Text>Upcoming Batches</Text>
-                    <Text>Start Date: {`${getDate(latestBatch.startdate)}`}</Text>
-                    <Text>End Date: {`${getDate(latestBatch.endDate)}`}</Text>
+                    <Text fontWeight="600">Start Date: {`${getDate(latestBatch.startdate)}`}</Text>
+                    <Text fontWeight="600">End Date: {`${getDate(latestBatch.endDate)}`}</Text>
+                </Box> : <Box className={styles.batch}>
+                    <Text>Upcoming Batches</Text>
+                    <Text>Comming Soon</Text>
                 </Box>}
             </Box>
         </Box>

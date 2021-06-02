@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Flex,
   Badge,
@@ -140,7 +140,9 @@ let randomAr = [1, 2, 5, 6, 8, 9]
     return () => {
       window.removeEventListener("scroll", () => null);
     };
-  }, []);
+  }, [courseId]);
+  let inputEl=useRef()
+  let showText=useRef()
 
   const handleShowLessonDescription = (id) => {
     if (showLessonDescription === id) {
@@ -296,7 +298,11 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                     ) : null}
                   </Box>}
                 <Box
-                  m={["20px 0", "40px"]}>
+                  m={["20px 0", "40px"]}
+                  className={course.TopicSchema.length > 9 ? styles.courseAccordion : "" }
+                  id="AccCont"
+                  ref={inputEl}
+                  >
                   <Text as="label">
                     Course content
                     </Text>
@@ -377,6 +383,22 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                       fontSize='15px'
                       >Content not yet updated!</Text>}
                   </Accordion>
+                  <Text
+                  style={{display:course.TopicSchema.length<9 ? "none" : "block"}}
+                  ref={showText}
+                  onClick={()=>{
+                      let thisel= inputEl.current;
+                      if (thisel.style.height === "auto") {
+                        thisel.style.height = "65vh";
+                        thisel.style.paddingBottom = "0";
+                        showText.current.innerText="Show More"
+                      } else {
+                        thisel.style.height = "auto";
+                        thisel.style.paddingBottom = "4em";
+                        showText.current.innerText="Show Less"
+                      }
+                  }}
+                  className={styles.showMore} zIndex="10">Show More</Text>
                 </Box>
                 <Box m={["20px 0", "40px"]} >
                   <Text as="label" className={styles.requirementSectionHeader}>
@@ -402,13 +424,14 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                   <div>
                     <Text
                       style={{
-                        height: showDescription ? "auto" : "200px",
+                        height: course.description.length < 150 ? "auto" : showDescription ? "auto" : "200px",
                         overflow: "hidden",
                       }}
                     >
                       <ReactMarkdown plugins={[gfm]} children={course.description} />
                     </Text>
                     <Box
+                    style={{display:course.description.length < 150 ? "none":"block"}}
                       className={styles.showMore}
                     >
                       <Button
@@ -505,7 +528,7 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                         item._id !== courseId ?
                         <Link
                         className={styles.alsoBought}
-                        to={`/course?courseId=${item._id}`}>
+                        to={`/course?courseId=${item.id}`}>
                         <div key={key} style={{
                           display: "flex",
                           marginTop: "15px",
@@ -514,14 +537,19 @@ let randomAr = [1, 2, 5, 6, 8, 9]
                           <Image
                             style={{ marginRight: "10px" }}
                             boxSize="80px"
-                            src={item.img}
+                            borderRadius="20px"
+                            border="3px solid #ccc"
+                            src={`${url}${item.img[0].url}`}
                             alt="Course_Image"
                           />
                           <div>
                             <Text style={{ fontSize: "18px", fontWeight: 700 }}>{item.title}</Text>
                             <Text style={{ fontWeight: 500 }}>Updated on {getDate(course.updatedAt)}</Text>
                           </div>
-                          <div style={{ margin: "0 auto" }}><Text style={{ color: "gold", fontWeight: 600 }}><BsStarFill className={styles.inlineBlock} />{item.ratings || '4.5'}</Text></div>
+                          <Box d="flex" alignItems="baseline" p="0 5px" style={{ margin: "0 auto" }}>
+                            <BsStarFill color="gold" className={styles.inlineBlock} />
+                            <Text as="span" ml="10px" style={{ color: "gold", fontWeight: 600 }}>{item.rating || '4.5'}</Text>
+                          </Box>
                           <div><Text style={{ fontWeight: 800 }}>₹{item.price}</Text></div>
                         </div>
                         </Link> : <div/>

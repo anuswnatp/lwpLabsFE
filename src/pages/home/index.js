@@ -84,7 +84,7 @@ function Home(props) {
     const [reviews,setReviews]=useState([])
     useEffect(() => {
         getAllTrendingCourse()
-        getBanners()
+        // getBanners()
         getTestimonials(true).then(data=>{
             setReviews(data.data)
         }).catch(err=>{

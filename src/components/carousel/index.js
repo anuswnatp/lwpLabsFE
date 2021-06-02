@@ -10,6 +10,7 @@ import {
 import { getBanners } from "../../../services/api/banners.api";
 import { url } from "../../../services/api/api.url";
 import { Spinner } from '@chakra-ui/spinner';
+import { navigate } from '@reach/router';
 
 const CustomCarousel = (props) => {
     const [loading, setloading] = useState(true)
@@ -25,7 +26,7 @@ const CustomCarousel = (props) => {
             altText:i.images[0].name,
             caption:i.descriptions || null,
             title:i.title|| null,
-            link:i.link||null
+            link:i.link||"/courses"
         }))
         setItem(carouselData)
     }
