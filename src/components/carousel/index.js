@@ -11,9 +11,13 @@ import { getBanners } from "../../../services/api/banners.api";
 import { url } from "../../../services/api/api.url";
 import { Spinner } from '@chakra-ui/spinner';
 import { navigate } from '@reach/router';
+import {modal} from "../../../services/redux/actions/courses"
+import { useDispatch } from 'react-redux';
+import { Link } from 'gatsby';
 
 const CustomCarousel = (props) => {
     const [loading, setloading] = useState(true)
+    const dispatch=useDispatch()
     useEffect(()=>{
         getAllData().then(d=>setloading(false)).catch(e=>setloading(false))
     },[])
@@ -26,7 +30,7 @@ const CustomCarousel = (props) => {
             altText:i.images[0].name,
             caption:i.descriptions || null,
             title:i.title|| null,
-            link:i.link||"/courses"
+            link: i.link || ""
         }))
         setItem(carouselData)
     }
@@ -58,8 +62,18 @@ const CustomCarousel = (props) => {
                 onExited={() => setAnimating(false)}
                 key={item.src}
             >
-                <img className={Styles.slides} src={item.src} alt={item.altText} />
-                {(item.caption || item.title) &&  <CarouselCaption className={Styles.captions} captionText={item.caption} captionHeader={item.title} />}
+                { items[activeIndex].link?
+                    (<Link target="_blank" to={items[activeIndex].link}>
+                    <img
+                    className={Styles.slides} src={item.src} alt={item.altText} />
+                    </Link> ):
+                    (<img
+                    onClick={()=>{
+                        dispatch(modal('free-demo'))
+                    }}
+                    className={Styles.slides} src={item.src} alt={item.altText} />)
+                }
+                {(item.caption || item.title) &&  <CarouselCaption  className={Styles.captions} captionText={item.caption} captionHeader={item.title} />}
             </CarouselItem>
         )
     });
@@ -72,7 +86,7 @@ const CustomCarousel = (props) => {
           />
           :
           <React.Fragment>
-            <div id={Styles.overlay}></div>
+            {/* <div id={Styles.overlay}></div> */}
             <Carousel
             className={Styles.customCarousel}
             activeIndex={activeIndex}
