@@ -5,10 +5,16 @@ import Styles from "./styles.module.scss"
 import Logo from "./logo"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { AiOutlineCloseCircle } from "react-icons/ai"
+import gfm from 'remark-gfm'
+import { GiCancel} from "react-icons/gi"
+import styles from "../../Layout/styles.module.scss"
+const ReactMarkdown = require('react-markdown')
+
 const Header = props => {
     const [show, setShow] = React.useState(false);
     const handleToggle = () =>{ setShow(!show) };
     return (
+        <>
         <Flex
             className={Styles.navBarContainer}
             as="nav"
@@ -31,6 +37,26 @@ const Header = props => {
             </Box>
             <MenuLinks show={show} handleToggle={()=>handleToggle()} />
         </Flex>
+        {props.isOpen && props.msg && <Box width="100%"
+                minHeight="40px"
+                d="flex"
+                p="0 15px"
+                alignItems="center"
+                bg="linear-gradient(126deg,#f5a623,#f76b1c)"
+                className={styles.offerParent}
+            >
+                <Box
+                flex="2"
+                bg="transparent"
+                color="#fff"
+                w="100%"
+                className={styles.offerWrapper}
+                >
+                    <ReactMarkdown plugins={[gfm]} children={props.msg}/>
+                </Box>
+                <GiCancel onClick={()=>props.setOpen(false)} color="#fff" size={20}/>
+            </Box>}
+        </>
     );
 };
 
