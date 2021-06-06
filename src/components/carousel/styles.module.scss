@@ -1,11 +1,15 @@
 @import "../../pages/global.scss";
 
 .slides {
-    object-fit: cover;
-    height: 60vh;
+    object-fit: fill;
+    height: 65vh;
     width: 100%;
     text-align: left !important;
     cursor: pointer;
+    @media (max-width:500px) {
+        object-fit: fill;
+        height: 45vh;
+    }
     div{
     display: flex;
     flex-direction: column;

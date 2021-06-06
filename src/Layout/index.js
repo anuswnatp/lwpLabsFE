@@ -42,12 +42,14 @@ export default function Layout({ children }) {
                 p="0 15px"
                 alignItems="center"
                 bg="linear-gradient(126deg,#f5a623,#f76b1c)"
+                className={styles.offerParent}
             >
                 <Box
                 flex="2"
                 bg="transparent"
                 color="#fff"
                 w="100%"
+                className={styles.offerWrapper}
                 >
                     <ReactMarkdown plugins={[gfm]} children={msg}/>
                 </Box>

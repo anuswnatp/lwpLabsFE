@@ -51,7 +51,9 @@ if(isOpen==='free-Demo' || title==="free-Demo"){
           <DemoList title={title}/>
         </Box>
         :
-        enroll?<FormHolders title={title} onClose={demo? ()=>setDemo('registered') : onClose}/>
+        enroll?<FormHolders title={title} onClose={onClose
+          // demo? ()=>setDemo('registered') : onClose
+        }/>
         :
         <>
         <Wrap spacing='20px'>

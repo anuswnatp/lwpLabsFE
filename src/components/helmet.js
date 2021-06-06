@@ -4,9 +4,9 @@ import { Helmet } from "react-helmet"
 const ReactHelmet = (
     {
         title = "lwplabs",
-        quote = "Learn with Projects",
+        quote = "Learn with ProjectsLwplabs.com. Formerly known as TrainingWale.com is the first Software Institute who implemented Project based Learning Model in IT Subjects. Open 24 hours.Join Millions of Learners From Around The World Already Learning On LWPLabs!",
         image = "",
-        description = "Hello",
+        description = "CV Grooming, Project Based Training,Certification. Learn with the Experts.",
         currentUrl = "https://www.lwplabs.com"
     }
 ) => (
