@@ -3,7 +3,8 @@ import axios from "axios"
 //Custom axios instance
 //oracle
 // const token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTE3NGVkOThjZjIwMDI1ZTI2NjRjMiIsImlhdCI6MTYyMzA5NjU5NCwiZXhwIjoxNjI1Njg4NTk0fQ.XH94x9rCm0f45bT4KNGrrPzpx7QK5OtyA0AaKkqYupE"
-if (getCookie("token") === false) {
+// if (getCookie("token") === false) {
+  let d= document? document : null
   axios.post("https://admin.lwplabs.com/auth/local", {
     "identifier": "anuswantp1998@gmail.com",
     "password": "Justgonemad@00"
@@ -14,14 +15,17 @@ if (getCookie("token") === false) {
       let expires = "expires=" + d.toUTCString();
       document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
-    setCookie("token", data.data.jwt, 2)
-    window.location.reload()
+    // setCookie("token", data.data.jwt, 2)
+    setToken(data.data.jwt)
+    // window.location.reload()
   })
-}
+// }
+let token=""
+let setToken=(d)=>token=d;
 console.log(getCookie("token"),"token");
 function getCookie(cname) {
   var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
+  var decodedCookie = decodeURIComponent(d.cookie);
   var ca = decodedCookie.split(';');
   for (var i = 0; i < ca.length; i++) {
     var c = ca[i];
@@ -38,7 +42,7 @@ function getCookie(cname) {
 const axiosInstance = axios.create({
   baseURL: "https://admin.lwplabs.com", //oracle
   // "http://localhost:8001", //local
-  headers: { Authorization: `Bearer ${getCookie("token")}` },
+  headers: { Authorization: `Bearer ${token}` },
 })
 
 export default axiosInstance
