@@ -4,7 +4,7 @@ import axios from "axios"
 //oracle
 // const token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTE3NGVkOThjZjIwMDI1ZTI2NjRjMiIsImlhdCI6MTYyMzA5NjU5NCwiZXhwIjoxNjI1Njg4NTk0fQ.XH94x9rCm0f45bT4KNGrrPzpx7QK5OtyA0AaKkqYupE"
 // if (getCookie("token") === false) {
-  let d= document? document : null
+  let d= typeof document === 'undefined' ? null : document
   axios.post("https://admin.lwplabs.com/auth/local", {
     "identifier": "anuswantp1998@gmail.com",
     "password": "Justgonemad@00"
