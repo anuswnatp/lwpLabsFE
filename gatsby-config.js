@@ -9,20 +9,20 @@ module.exports = {
                 path: `${__dirname}/src/images`,
             },
         },
-        {
-            resolve: 'gatsby-source-strapi',
-            options: {
-                apiURL: 'https://admin.lwplabs.com',
-                contentTypes: [ // List of the Content Types you want to be able to request from Gatsby.
-                    'Courses'
-                ],
-                loginData: {
-                    identifier: "anuswantp1998@gmail.com",
-                    password: "Justgonemad@00",
-                },
-                queryLimit: 1000,
-            },
-        },
+        // {
+        //     resolve: 'gatsby-source-strapi',
+        //     options: {
+        //         apiURL: 'https://admin.lwplabs.com',
+        //         contentTypes: [ // List of the Content Types you want to be able to request from Gatsby.
+        //             'Courses'
+        //         ],
+        //         loginData: {
+        //             identifier: "anuswantp1998@gmail.com",
+        //             password: "Justgonemad@00",
+        //         },
+        //         queryLimit: 1000,
+        //     },
+        // },
         'gatsby-transformer-sharp',
         'gatsby-plugin-sharp',
         'gatsby-plugin-offline',

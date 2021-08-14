@@ -39,7 +39,7 @@ const token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTE3NGVkOThjZjIwM
 const axiosInstance = axios.create({
   baseURL: "https://admin.lwplabs.com", //oracle
   // "http://localhost:8001", //local
-  headers: { Authorization: `Bearer ${token}` },
+  // headers: { Authorization: `Bearer ${token}` },
 })
 
 export default axiosInstance
