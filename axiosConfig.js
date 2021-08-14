@@ -2,7 +2,7 @@ import axios from "axios"
 
 //Custom axios instance
 //oracle
-const token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTE3NGVkOThjZjIwMDI1ZTI2NjRjMiIsImlhdCI6MTYyNjI0MDU1NywiZXhwIjoxNjI4ODMyNTU3fQ.jVXnoZWohS0NtZWDI_-xzjRini1fRfRtJKR-Cppt854"
+const token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMTE3NGVkOThjZjIwMDI1ZTI2NjRjMiIsImlhdCI6MTYyODkzOTExOSwiZXhwIjoxNjMxNTMxMTE5fQ.cKeOTPIpCjXWsZQWJT2dpqjP1PTzKzMUfShcLVUf_to"
 // let d= typeof document === 'undefined' ? null : document
 // if (getCookie("token") === false) {
 //   axios.post("https://admin.lwplabs.com/auth/local", {
