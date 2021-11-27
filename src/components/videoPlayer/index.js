@@ -23,7 +23,7 @@ function VideoPlayer() {
             light={true}
             playing={true}
             loop={true}
-            url='https://www.youtube.com/watch?v=1mo0UuAP3WI&t=1192s' />
+            url='https://www.youtube.com/watch?v=yGnWx9aa1fI&list=PLidSW-NZ2T89C5crbBwX42Crp92iF7Bzi' />
         </Flex>
     )
 }
