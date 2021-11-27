@@ -32,6 +32,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getTestimonials } from '../../../services/api/testimonials.api';
 import GatsbyImage from 'gatsby-image';
 import { url } from '../../../services/api/api.url';
+import roadMap from '../../images/roadMap.gif'
 function Home(props) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const dispatch = useDispatch()
@@ -97,7 +98,9 @@ function Home(props) {
                 <Form isOpen={isOpen} onClose={onClose}/>
                 <BannerCarousel />
                 <Box>
+                    <Box padding={['10px']}>
                     <AboutSection imageData={imageData}  />
+                    </Box>
                     <VideoPlayer/>
                     <Box background="#c0c0c01a">
                         <CourseSection url={url}/>
@@ -212,11 +215,11 @@ const AboutSection = ({imageData}) => {
             title: "Job Support"
         }
     ]
-    return <Flex
-        p={["30px 30px", "40px 30px", "50px 30px", "60px 30px"]}
-        direction={["column", "row", "row", "row"]}
-        justifyContent="space-between">
-        {flow.map((item, key) => <Box key={key}>
+    return <Box
+    w={['auto']}
+    p={['10px']}
+    >
+        {/* {flow.map((item, key) => <Box key={key}>
             <Box
                 width={["100%", "14rem", "25em"]}
                 textAlign="center"
@@ -233,8 +236,14 @@ const AboutSection = ({imageData}) => {
                 />
             </Box>
             <Text mt="20px" mb="10px" as="h3" textAlign="center" fontWeight="600" color="highlighter.100">{item.title}</Text>
-        </Box>)}
-    </Flex>
+        </Box>)} */}
+        <Image
+        w={['auto']}
+        height={['100%']}
+        maxH={['50vh','50vh','75vh']}
+        margin={['auto']}
+        style={{objectFit:'contain'}} src={roadMap}/>
+    </Box>
 }
 const Clients= ()=>{
     const ar=[{src:tcs,link:"https://www.tcs.com/"},

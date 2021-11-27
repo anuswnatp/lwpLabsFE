@@ -39,7 +39,7 @@ function MenuLinks({ show,handleToggle }) {
                     onClick={()=>dispatch(modal("free-demo"))}
                     bgColor="linear-gradient(126deg,#f5a623,#f76b1c)"
                     style={{ margin: "8px 0", width: "75%" }}
-                  ><Text p="15px">Request Demo</Text></Btn>
+                  ><Text p="15px">Request a Callback</Text></Btn>
                 </Center>
                 </MenuItems>
                 {/* <Button
